@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Layout</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="account-master.css">
+</head>
+<body>
+
+  <header class="mobile-header">
+    <div class="mobile-logo">
+      <i class="fa-solid fa-user-shield"></i>
+      <span>AdminPanel</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">
+        <i class="fa-solid fa-user-shield"></i>
+      </div>
+      <div class="brand-info">
+        <h3>ElitePlus</h3>
+        <p>Management System</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-menu">
+      <ul>
+        <li class="menu-item">
+          <a href="dashboard.html">
+            <i class="fa-solid fa-chart-pie menu-icon"></i>
+            <span class="menu-text">Dashboard</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="company-profile.html">
+            <i class="fa-solid fa-building menu-icon"></i>
+            <span class="menu-text">Company Profile</span>
+          </a>
+        </li>
+        <li class="menu-item active">
+          <a href="account-master.html">
+            <i class="fa-solid fa-file-invoice-dollar menu-icon"></i>
+            <span class="menu-text">Account Master</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="item-master.html">
+            <i class="fa-solid fa-boxes-stacked menu-icon"></i>
+            <span class="menu-text">Item Master</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="user-management.html">
+            <i class="fa-solid fa-users-gear menu-icon"></i>
+            <span class="menu-text">User Management</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="client-management.html">
+            <i class="fa-solid fa-handshake menu-icon"></i>
+            <span class="menu-text">Client Management</span>
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="quotation.html">
+            <i class="fa-solid fa-file-lines menu-icon"></i>
+            <span class="menu-text">Quotation</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="logout.html" class="logout-btn">
+        <i class="fa-solid fa-right-from-bracket menu-icon"></i>
+        <span class="menu-text">Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+  <div class="container-fluid px-0">
+    
+    <!-- Account Master Section (Animated Container) -->
+    <div class="account-master-section animate-fade-in">
+      
+      <!-- 1. Form Card Layout -->
+      <div class="master-card mb-4">
+        <div class="master-card-header">
+          <h2 class="master-title">Account Master (Enhanced)</h2>
+        </div>
+        
+        <div class="master-card-body">
+          <form id="accountForm">
+            <div class="row g-4">
+              
+              <!-- Row 1 -->
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Type of Master</label>
+                  <select class="form-input-custom">
+                    <option value="Customer" selected>Customer</option>
+                    <option value="Supplier">Supplier</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">GST Status</label>
+                  <select class="form-input-custom">
+                    <option value="GST Registered" selected>GST Registered</option>
+                    <option value="Unregistered">Unregistered</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Account Name</label>
+                  <input type="text" class="form-input-custom" placeholder="Enter Name">
+                </div>
+              </div>
+
+              <!-- Row 2 -->
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Contact Person Name</label>
+                  <input type="text" class="form-input-custom" placeholder="Contact Person">
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Mobile Number</label>
+                  <input type="tel" class="form-input-custom" placeholder="Mobile">
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">WhatsApp Number</label>
+                  <input type="tel" class="form-input-custom" placeholder="WhatsApp No">
+                </div>
+              </div>
+
+              <!-- Row 3 -->
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Email</label>
+                  <input type="email" class="form-input-custom" placeholder="Email">
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">GST Number</label>
+                  <input type="text" class="form-input-custom" placeholder="GST No">
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">PAN Number</label>
+                  <input type="text" class="form-input-custom" placeholder="PAN No">
+                </div>
+              </div>
+
+              <!-- Row 4 -->
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Credit Limit (₹)</label>
+                  <input type="text" class="form-input-custom" placeholder="0.00">
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Opening Balance</label>
+                  <input type="text" class="form-input-custom" placeholder="0.00">
+                </div>
+              </div>
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Balance Type</label>
+                  <select class="form-input-custom">
+                    <option value="Credit" selected>Credit</option>
+                    <option value="Debit">Debit</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 5 -->
+              <div class="col-12 col-md-4">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Status</label>
+                  <select class="form-input-custom">
+                    <option value="Active" selected>Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="col-md-8 d-none d-md-block"></div> <!-- Spacing alignment -->
+
+              <!-- Textareas (Image_972604.png नुसार फुल विड्थ) -->
+              <div class="col-12">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Billing Address</label>
+                  <textarea class="form-input-custom rows-textarea" rows="2"></textarea>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group-custom">
+                  <label class="form-label-custom">Shipping Address</label>
+                  <textarea class="form-input-custom rows-textarea" rows="2"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons (Image_972604.png नुसार सेम लुक) -->
+            <div class="action-buttons-container mt-4">
+              <button type="submit" class="btn-save-account">Save Account</button>
+              <button type="reset" class="btn-reset-account">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- 2. Account List Card Layout -->
+      <div class="master-card">
+        <div class="master-card-header">
+          <h2 class="master-title mb-3">Account List</h2>
+          <div class="search-container">
+            <input type="text" id="accountSearch" class="search-input-custom" placeholder="Search Account...">
+          </div>
+        </div>
+
+        <div class="master-card-body p-0">
+          <div class="table-responsive-custom">
+            <table class="table-custom">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>GST</th>
+                  <th>Contact Person</th>
+                  <th>WhatsApp</th>
+                  <th>Credit Limit</th>
+                  <th>Status</th>
+                  <th style="width: 150px;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="accountTableBody">
+                <tr class="table-row-hover">
+                  <td class="fw-semibold">ABC Enterprises</td>
+                  <td>Customer</td>
+                  <td>Registered</td>
+                  <td>Rahul Sharma</td>
+                  <td>9876543210</td>
+                  <td>50,000</td>
+                  <td><span class="badge-active">Active</span></td>
+                  <td>
+                    <div class="table-actions-btns">
+                      <button type="button" class="btn-table-edit">Edit</button>
+                      <button type="button" class="btn-table-delete">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bundle.min.js"></script>
+  <script src="account-master.js"></script>
+</body>
+</html>

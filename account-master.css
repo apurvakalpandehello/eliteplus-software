@@ -1,0 +1,457 @@
+/* Color System Setup */
+:root {
+    --primary-color: #0F4C81;
+    --secondary-color: #1E88E5;
+    --accent-color: #00ACC1;
+    --background-color: #F8FAFC;
+    --text-color: #1F2937;
+    --border-color: #D1D5DB;
+    --white: #FFFFFF;
+    --sidebar-width: 260px;
+    --logout-danger: #EF4444;
+}
+
+/* Base Body Engine */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   SIDEBAR ENGINE (नवीन कलर पॅलेटनुसार डिझाइन)
+   ========================================== */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--white);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 24px 16px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #EDF2F7;
+    margin-bottom: 24px;
+}
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(15, 76, 129, 0.15);
+}
+
+.brand-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.brand-info p {
+    font-size: 11px;
+    color: #718096;
+    margin: 0;
+}
+
+.sidebar-menu {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+}
+
+.menu-item a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    color: #4A5568;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.menu-item a:hover {
+    background-color: rgba(30, 136, 229, 0.06);
+    color: var(--secondary-color);
+}
+
+.menu-item a:hover .menu-icon {
+    transform: scale(1.1);
+}
+
+/* Active State - ग्रॅडिएंट मध्ये नवीन ॲक्सेंट कलर वापरला आहे */
+.menu-item.active a {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(15, 76, 129, 0.15);
+}
+
+.sidebar-footer {
+    padding-top: 16px;
+    border-top: 1px solid #EDF2F7;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    color: var(--logout-danger);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: #FEF2F2;
+}
+
+.logout-btn:hover {
+    background-color: var(--logout-danger);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* ==========================================
+   MOBILE HEADER STYLE 
+   ========================================== */
+.mobile-header {
+    display: none;
+    width: 100%;
+    height: 60px;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* ==========================================
+   MAIN CONTENT WRAPPER 
+   ========================================== */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 40px;
+    width: calc(100% - var(--sidebar-width));
+    transition: all 0.4s ease;
+}
+
+/* Responsive Grid Logic (Responsive Engine) */
+@media (max-width: 991px) {
+    .mobile-header { display: flex; }
+    .sidebar { transform: translateX(-100%); }
+    
+    /* Active Mobile Sidebar */
+    .sidebar.open { 
+        transform: translateX(0); 
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.08); 
+    }
+    .main-content { 
+        margin-left: 0; 
+        width: 100%; 
+        padding: 90px 20px 20px 20px; 
+    }
+}
+
+
+/* ==========================================
+   ACCOUNT MASTER SCREEN MODULE
+   ========================================== */
+
+/* Fade-in Animation for Screen Loading */
+.animate-fade-in {
+    animation: smoothFadeUp 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes smoothFadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Wrapper Material Design */
+.master-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+}
+
+.master-card-header {
+    padding: 24px 24px 12px 24px;
+    background-color: var(--white);
+}
+
+.master-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.master-card-body {
+    padding: 24px;
+}
+
+/* Form Groups and Inputs */
+.form-group-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label-custom {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.form-input-custom {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    background-color: var(--white);
+    color: var(--text-color);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Smooth Input Focus Effect */
+.form-input-custom:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+}
+
+select.form-input-custom {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234B5563'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+    padding-right: 36px;
+}
+
+.rows-textarea {
+    resize: none;
+    min-height: 56px;
+}
+
+/* Action Buttons Style (Image_972604.png प्रमाणे सेम डिझाइन) */
+.action-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-save-account, .btn-reset-account {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-save-account {
+    background-color: #1E75FF; /* Exact Image Blue Color */
+    color: var(--white);
+}
+
+.btn-save-account:hover {
+    background-color: #0056E0;
+    transform: translateY(-1px);
+}
+
+.btn-reset-account {
+    background-color: #6B7280; /* Exact Image Slate Gray Color */
+    color: var(--white);
+}
+
+.btn-reset-account:hover {
+    background-color: #4B5563;
+    transform: translateY(-1px);
+}
+
+/* List & Search Control */
+.search-container {
+    padding: 0;
+}
+
+.search-input-custom {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    transition: all 0.2s ease;
+}
+
+.search-input-custom:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Table Architecture Sub System */
+.table-responsive-custom {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.table-custom th {
+    background-color: var(--white);
+    padding: 14px 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    border-top: 1px solid #E5E7EB;
+    border-bottom: 2px solid #E5E7EB;
+    text-align: left;
+}
+
+.table-custom td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #E5E7EB;
+    color: #4B5563;
+    vertical-align: middle;
+}
+
+.table-row-hover {
+    transition: background-color 0.15s ease;
+}
+
+.table-custom tbody tr:hover {
+    background-color: #F9FAFB;
+}
+
+/* Active Status Badge */
+.badge-active {
+    background-color: #059669; /* Image Active Green */
+    color: var(--white);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* Table Action Buttons */
+.table-actions-btns {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-table-edit, .btn-table-delete {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-table-edit {
+    background-color: #FBBF24; /* Yellow */
+    color: #000000;
+}
+
+.btn-table-edit:hover {
+    background-color: #F59E0B;
+}
+
+.btn-table-delete {
+    background-color: #EF4444; /* Red */
+    color: var(--white);
+}
+
+.btn-table-delete:hover {
+    background-color: #DC2626;
+}
+
+/* Responsive Breakpoint Logic */
+@media (min-width: 768px) {
+    .action-buttons-container {
+        flex-direction: row;
+    }
+    .btn-save-account {
+        flex: 1;
+    }
+    .btn-reset-account {
+        width: auto;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
