@@ -216,13 +216,14 @@ body {
 }
 
 
+
+
 /* ==========================================
-   ACCOUNT MASTER SCREEN MODULE
+   ACCOUNT MASTER PROFESSIONAL GLOBAL STYLES
    ========================================== */
 
-/* Fade-in Animation for Screen Loading */
 .animate-fade-in {
-    animation: smoothFadeUp 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+    animation: smoothFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes smoothFadeUp {
@@ -230,32 +231,85 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Card Wrapper Material Design */
 .master-card {
     background: var(--white);
-    border-radius: 12px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
     overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.master-card:hover {
+    box-shadow: 0 6px 20px rgba(15, 76, 129, 0.04);
 }
 
 .master-card-header {
-    padding: 24px 24px 12px 24px;
+    padding: 20px 24px;
     background-color: var(--white);
+    border-bottom: 1px solid #EDF2F7;
 }
 
 .master-title {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--text-color);
     margin: 0;
+}
+
+.badge-enhanced {
+    font-size: 11px;
+    background-color: rgba(30, 136, 229, 0.08);
+    color: var(--secondary-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+/* Form Top Right Button (View Account List) */
+.btn-top-action {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-top-action:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+/* Account List Header Side Button (Add Account Master) */
+.btn-add-master-trigger {
+    background-color: rgba(30, 136, 229, 0.08);
+    color: var(--secondary-color);
+    border: 1px solid rgba(30, 136, 229, 0.2);
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-add-master-trigger:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    transform: translateY(-1px);
 }
 
 .master-card-body {
     padding: 24px;
 }
 
-/* Form Groups and Inputs */
 .form-group-custom {
     display: flex;
     flex-direction: column;
@@ -263,27 +317,26 @@ body {
 }
 
 .form-label-custom {
-    font-size: 14px;
-    font-weight: 500;
-    color: #374151;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #4B5563;
 }
 
 .form-input-custom {
     width: 100%;
     padding: 10px 14px;
     font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    border: 1px solid #D1D5DB;
     background-color: var(--white);
     color: var(--text-color);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Smooth Input Focus Effect */
 .form-input-custom:focus {
     outline: none;
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.12);
 }
 
 select.form-input-custom {
@@ -291,17 +344,16 @@ select.form-input-custom {
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234B5563'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 12px center;
+    background-position: right 14px center;
     background-size: 14px;
-    padding-right: 36px;
+    padding-right: 38px;
 }
 
 .rows-textarea {
-    resize: none;
-    min-height: 56px;
+    resize: vertical;
+    min-height: 58px;
 }
 
-/* Action Buttons Style (Image_972604.png प्रमाणे सेम डिझाइन) */
 .action-buttons-container {
     display: flex;
     flex-direction: column;
@@ -310,48 +362,59 @@ select.form-input-custom {
 
 .btn-save-account, .btn-reset-account {
     width: 100%;
-    padding: 12px;
-    font-size: 15px;
-    font-weight: 500;
+    padding: 11px;
+    font-size: 14.5px;
+    font-weight: 600;
     border-radius: 6px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
-    text-align: center;
 }
 
 .btn-save-account {
-    background-color: #1E75FF; /* Exact Image Blue Color */
+    background-color: #1E75FF;
     color: var(--white);
 }
 
 .btn-save-account:hover {
     background-color: #0056E0;
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 117, 255, 0.2);
 }
 
 .btn-reset-account {
-    background-color: #6B7280; /* Exact Image Slate Gray Color */
+    background-color: #4B5563;
     color: var(--white);
 }
 
 .btn-reset-account:hover {
-    background-color: #4B5563;
+    background-color: #374151;
     transform: translateY(-1px);
 }
 
-/* List & Search Control */
+/* Search Box Container styles */
 .search-container {
-    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+.search-icon-fa {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    color: #9CA3AF;
+    pointer-events: none;
 }
 
 .search-input-custom {
     width: 100%;
-    padding: 10px 14px;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
-    transition: all 0.2s ease;
+    padding: 9px 14px 9px 38px;
+    font-size: 13.5px;
+    border-radius: 6px;
+    border: 1px solid #D1D5DB;
+    transition: border-color 0.2s ease;
 }
 
 .search-input-custom:focus {
@@ -359,7 +422,7 @@ select.form-input-custom {
     border-color: var(--accent-color);
 }
 
-/* Table Architecture Sub System */
+/* Premium Structured Table */
 .table-responsive-custom {
     width: 100%;
     overflow-x: auto;
@@ -368,17 +431,16 @@ select.form-input-custom {
 .table-custom {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 13.5px;
 }
 
 .table-custom th {
-    background-color: var(--white);
+    background-color: #F9FAFB;
     padding: 14px 16px;
     font-weight: 600;
-    color: var(--text-color);
-    border-top: 1px solid #E5E7EB;
+    color: #374151;
+    border-top: 1px solid #EDF2F7;
     border-bottom: 2px solid #E5E7EB;
-    text-align: left;
 }
 
 .table-custom td {
@@ -388,35 +450,29 @@ select.form-input-custom {
     vertical-align: middle;
 }
 
-.table-row-hover {
-    transition: background-color 0.15s ease;
-}
-
 .table-custom tbody tr:hover {
-    background-color: #F9FAFB;
+    background-color: rgba(15, 76, 129, 0.01);
 }
 
-/* Active Status Badge */
 .badge-active {
-    background-color: #059669; /* Image Active Green */
+    background-color: var(--primary-color);
     color: var(--white);
-    font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-weight: 500;
-    display: inline-block;
+    font-size: 11.5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
 }
 
-/* Table Action Buttons */
 .table-actions-btns {
     display: flex;
-    gap: 6px;
+    gap: 8px;
+    justify-content: center;
 }
 
 .btn-table-edit, .btn-table-delete {
     padding: 6px 12px;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 600;
     border-radius: 4px;
     border: none;
     cursor: pointer;
@@ -424,34 +480,37 @@ select.form-input-custom {
 }
 
 .btn-table-edit {
-    background-color: #FBBF24; /* Yellow */
-    color: #000000;
+    background-color: #FEF3C7;
+    color: #B45309;
 }
 
 .btn-table-edit:hover {
-    background-color: #F59E0B;
+    background-color: #FDE68A;
 }
 
 .btn-table-delete {
-    background-color: #EF4444; /* Red */
-    color: var(--white);
+    background-color: #FEE2E2;
+    color: #DC2626;
 }
 
 .btn-table-delete:hover {
-    background-color: #DC2626;
+    background-color: #FCA5A5;
 }
 
-/* Responsive Breakpoint Logic */
+/* Responsive Logic Grid Layouts */
 @media (min-width: 768px) {
     .action-buttons-container {
         flex-direction: row;
     }
     .btn-save-account {
-        flex: 1;
+        flex: 2;
     }
     .btn-reset-account {
         width: auto;
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 36px;
+        padding-right: 36px;
+    }
+    .search-container {
+        width: 280px;
     }
 }

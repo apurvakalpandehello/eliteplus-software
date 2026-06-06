@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleIcon.className = 'fa-solid fa-bars';
         }
     });
+    
 
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 991 && sidebar.classList.contains('open')) {

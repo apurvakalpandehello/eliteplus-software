@@ -88,27 +88,30 @@
     </div>
   </aside>
 
-  <main class="main-content">
+
+<main class="main-content">
   <div class="container-fluid px-0">
     
-    <!-- Account Master Section (Animated Container) -->
     <div class="account-master-section animate-fade-in">
       
-      <!-- 1. Form Card Layout -->
-      <div class="master-card mb-4">
-        <div class="master-card-header">
-          <h2 class="master-title">Account Master (Enhanced)</h2>
+      <div class="master-card mb-4" id="accountFormCard">
+        <div class="master-card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+          <h2 class="master-title" id="formCardTitle">💼 Account Master <span class="badge-enhanced">Enhanced</span></h2>
+          <button type="button" class="btn-top-action" id="scrollListBtn">
+            View Account List
+          </button>
         </div>
         
         <div class="master-card-body">
           <form id="accountForm">
+            <input type="hidden" id="editRowIndex" value="">
+            
             <div class="row g-4">
               
-              <!-- Row 1 -->
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Type of Master</label>
-                  <select class="form-input-custom">
+                  <select class="form-input-custom" id="masterType">
                     <option value="Customer" selected>Customer</option>
                     <option value="Supplier">Supplier</option>
                   </select>
@@ -118,7 +121,7 @@
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">GST Status</label>
-                  <select class="form-input-custom">
+                  <select class="form-input-custom" id="gstStatus">
                     <option value="GST Registered" selected>GST Registered</option>
                     <option value="Unregistered">Unregistered</option>
                   </select>
@@ -128,123 +131,127 @@
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Account Name</label>
-                  <input type="text" class="form-input-custom" placeholder="Enter Name">
+                  <input type="text" class="form-input-custom" id="accountName" placeholder="Enter Account Name" required>
                 </div>
               </div>
 
-              <!-- Row 2 -->
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Contact Person Name</label>
-                  <input type="text" class="form-input-custom" placeholder="Contact Person">
+                  <input type="text" class="form-input-custom" id="contactPerson" placeholder="Contact Person">
                 </div>
               </div>
               
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Mobile Number</label>
-                  <input type="tel" class="form-input-custom" placeholder="Mobile">
+                  <input type="tel" class="form-input-custom" id="mobileNumber" placeholder="Mobile Number">
                 </div>
               </div>
               
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">WhatsApp Number</label>
-                  <input type="tel" class="form-input-custom" placeholder="WhatsApp No">
+                  <input type="tel" class="form-input-custom" id="whatsappNumber" placeholder="WhatsApp Number">
                 </div>
               </div>
 
-              <!-- Row 3 -->
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
-                  <label class="form-label-custom">Email</label>
-                  <input type="email" class="form-input-custom" placeholder="Email">
+                  <label class="form-label-custom">Email Address</label>
+                  <input type="email" class="form-input-custom" id="emailAddress" placeholder="name@company.com">
                 </div>
               </div>
               
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">GST Number</label>
-                  <input type="text" class="form-input-custom" placeholder="GST No">
+                  <input type="text" class="form-input-custom" id="gstNumber" placeholder="GSTIN No" style="text-transform: uppercase;">
                 </div>
               </div>
               
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">PAN Number</label>
-                  <input type="text" class="form-input-custom" placeholder="PAN No">
+                  <input type="text" class="form-input-custom" id="panNumber" placeholder="Permanent AC Number" style="text-transform: uppercase;">
                 </div>
               </div>
 
-              <!-- Row 4 -->
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Credit Limit (₹)</label>
-                  <input type="text" class="form-input-custom" placeholder="0.00">
+                  <input type="text" class="form-input-custom" id="creditLimit" placeholder="0.00">
                 </div>
               </div>
               
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Opening Balance</label>
-                  <input type="text" class="form-input-custom" placeholder="0.00">
+                  <input type="text" class="form-input-custom" id="openingBalance" placeholder="0.00">
                 </div>
               </div>
               
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Balance Type</label>
-                  <select class="form-input-custom">
+                  <select class="form-input-custom" id="balanceType">
                     <option value="Credit" selected>Credit</option>
                     <option value="Debit">Debit</option>
                   </select>
                 </div>
               </div>
 
-              <!-- Row 5 -->
               <div class="col-12 col-md-4">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Status</label>
-                  <select class="form-input-custom">
+                  <select class="form-input-custom" id="accountStatus">
                     <option value="Active" selected>Active</option>
                     <option value="Inactive">Inactive</option>
                   </select>
                 </div>
               </div>
               
-              <div class="col-md-8 d-none d-md-block"></div> <!-- Spacing alignment -->
+              <div class="col-md-8 d-none d-md-block"></div>
 
-              <!-- Textareas (Image_972604.png नुसार फुल विड्थ) -->
               <div class="col-12">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Billing Address</label>
-                  <textarea class="form-input-custom rows-textarea" rows="2"></textarea>
+                  <textarea class="form-input-custom rows-textarea" id="billingAddress" rows="2" placeholder="Enter official billing address"></textarea>
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="form-group-custom">
                   <label class="form-label-custom">Shipping Address</label>
-                  <textarea class="form-input-custom rows-textarea" rows="2"></textarea>
+                  <textarea class="form-input-custom rows-textarea" id="shippingAddress" rows="2" placeholder="Enter default shipping location"></textarea>
                 </div>
               </div>
             </div>
 
-            <!-- Action Buttons (Image_972604.png नुसार सेम लुक) -->
             <div class="action-buttons-container mt-4">
-              <button type="submit" class="btn-save-account">Save Account</button>
-              <button type="reset" class="btn-reset-account">Reset</button>
+              <button type="submit" class="btn-save-account" id="btnSubmitForm">
+                <i class="fa-solid fa-check me-2"></i>Save Account
+              </button>
+              <button type="button" class="btn-reset-account" id="btnResetForm">
+                <i class="fa-solid fa-arrow-rotate-left me-2"></i>Reset
+              </button>
             </div>
           </form>
         </div>
       </div>
 
-      <!-- 2. Account List Card Layout -->
-      <div class="master-card">
-        <div class="master-card-header">
-          <h2 class="master-title mb-3">Account List</h2>
+      <div class="master-card" id="accountListCard">
+        <div class="master-card-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+          <div class="d-flex align-items-center gap-3">
+            <h2 class="master-title">📊 Account List</h2>
+            <button type="button" class="btn-add-master-trigger" id="scrollToFormBtn">
+              <i class="fa-solid fa-plus me-1"></i> Add Account Master
+            </button>
+          </div>
+          
           <div class="search-container">
-            <input type="text" id="accountSearch" class="search-input-custom" placeholder="Search Account...">
+            <i class="fa-solid fa-magnifying-glass search-icon-fa"></i>
+            <input type="text" id="accountSearch" class="search-input-custom" placeholder="Filter records...">
           </div>
         </div>
 
@@ -255,27 +262,27 @@
                 <tr>
                   <th>Name</th>
                   <th>Type</th>
-                  <th>GST</th>
+                  <th>GST Status</th>
                   <th>Contact Person</th>
                   <th>WhatsApp</th>
                   <th>Credit Limit</th>
                   <th>Status</th>
-                  <th style="width: 150px;">Action</th>
+                  <th style="width: 170px; text-align: center;">Action</th>
                 </tr>
               </thead>
               <tbody id="accountTableBody">
-                <tr class="table-row-hover">
-                  <td class="fw-semibold">ABC Enterprises</td>
-                  <td>Customer</td>
-                  <td>Registered</td>
-                  <td>Rahul Sharma</td>
-                  <td>9876543210</td>
-                  <td>50,000</td>
-                  <td><span class="badge-active">Active</span></td>
+                <tr class="table-row-hover" data-email="name@company.com" data-gstno="27AAAAA0000A1Z5" data-panno="ABCDE1234F" data-openbal="0.00" data-baltype="Credit" data-billing="Sample Billing Address" data-shipping="Sample Shipping Address">
+                  <td class="fw-semibold text-dark account-td-name">ABC Enterprises</td>
+                  <td class="account-td-type">Customer</td>
+                  <td class="account-td-gst">GST Registered</td>
+                  <td class="account-td-contact">Rahul Sharma</td>
+                  <td class="account-td-whatsapp">9876543210</td>
+                  <td class="fw-medium account-td-limit">50,000</td>
+                  <td><span class="badge-active account-td-status">Active</span></td>
                   <td>
                     <div class="table-actions-btns">
-                      <button type="button" class="btn-table-edit">Edit</button>
-                      <button type="button" class="btn-table-delete">Delete</button>
+                      <button type="button" class="btn-table-edit btn-row-edit"><i class="fa-solid fa-pen me-1"></i> Edit</button>
+                      <button type="button" class="btn-table-delete btn-row-delete"><i class="fa-solid fa-trash me-1"></i> Delete</button>
                     </div>
                   </td>
                 </tr>
@@ -289,6 +296,7 @@
 
   </div>
 </main>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bundle.min.js"></script>
   <script src="account-master.js"></script>
