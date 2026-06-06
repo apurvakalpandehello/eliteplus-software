@@ -1,216 +1,159 @@
-/* Color System Setup */
+/* Custom Corporate Design Architecture Variables [cite: 4, 7, 9] */
 :root {
     --primary-color: #0F4C81;
     --secondary-color: #1E88E5;
     --accent-color: #00ACC1;
-    --background-color: #F8FAFC;
+    --background-color: #F1F5F9;
     --text-color: #1F2937;
-    --border-color: #D1D5DB;
+    --border-color: #CBD5E1;
     --white: #FFFFFF;
     --sidebar-width: 260px;
-    --logout-danger: #EF4444;
+    --invoice-blue: #0284c7;
+    --invoice-tint: #f0f9ff;
 }
 
-/* Base Body Engine */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    display: flex;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--background-color); color: var(--text-color); display: flex; min-height: 100vh; overflow-x: hidden; }
 
 /* ==========================================
-   SIDEBAR ENGINE (नवीन कलर पॅलेटनुसार डिझाइन)
+   SIDEBAR & GENERIC PAGE WRAPPERS (Unchanged)
    ========================================== */
-.sidebar {
-    width: var(--sidebar-width);
-    height: 100vh;
-    background-color: var(--white);
-    border-right: 1px solid var(--border-color);
+.sidebar { width: var(--sidebar-width); height: 100vh; background-color: var(--white); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; z-index: 1000; padding: 24px 16px; transition: all 0.4s ease; }
+.sidebar-brand { display: flex; align-items: center; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #EDF2F7; margin-bottom: 24px; }
+.brand-logo { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: var(--white); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 18px; }
+.brand-info h3 { font-size: 16px; font-weight: 700; color: var(--primary-color); margin: 0; }
+.brand-info p { font-size: 11px; color: #718096; margin: 0; }
+.sidebar-menu ul { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; }
+.menu-item a { display: flex; align-items: center; gap: 14px; padding: 12px 16px; color: #4A5568; text-decoration: none; font-size: 14px; font-weight: 500; border-radius: 10px; }
+.menu-item.active a { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); }
+.sidebar-footer { padding-top: 16px; border-top: 1px solid #EDF2F7; }
+.logout-btn { display: flex; align-items: center; gap: 14px; padding: 12px 16px; color: var(--logout-danger); text-decoration: none; font-size: 14px; font-weight: 600; background-color: #FEF2F2; border-radius: 10px; }
+
+.main-content { margin-left: var(--sidebar-width); padding: 40px; width: calc(100% - var(--sidebar-width)); transition: all 0.4s ease; }
+.mobile-header { display: none; width: 100%; height: 60px; background-color: var(--white); border-bottom: 1px solid var(--border-color); position: fixed; top: 0; left: 0; z-index: 1010; padding: 0 20px; justify-content: space-between; align-items: center; }
+.mobile-logo { display: flex; align-items: center; gap: 10px; color: var(--primary-color); font-weight: 700; }
+.menu-toggle { background: none; border: none; font-size: 22px; color: var(--primary-color); cursor: pointer; }
+
+/* Micro Interaction Animations */
+.animate-fade-in { animation: smoothFadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes smoothFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ==========================================
+   INPUT FORM DECORATIONS
+   ========================================== */
+.master-card { background: var(--white); border-radius: 10px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+.master-card-header { padding: 14px 20px; }
+.form-select, .form-control { font-size: 13.5px; border-radius: 6px; padding: 8px 12px; border-color: #cbd5e1; }
+.form-select:focus, .form-control:focus { box-shadow: 0 0 0 3px rgba(30,136,229,0.15); border-color: var(--secondary-color); }
+
+/* ==========================================
+   HIGH FIDELITY A4 CLIENT VIEW REAL-TIME DESIGN [cite: 7, 9, 12]
+   ========================================== */
+.document-a4-view-container { display: flex; justify-content: center; margin-top: 20px; }
+.printable-a4-sheet {
+    background-color: #ffffff;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 18mm 14mm;
+    border: 1px solid #94a3b8;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    position: relative;
+}
+
+/* Red Medical Cross Header Box Brand Setup from Screen  */
+.corporate-title-main { font-size: 28px; font-weight: 700; color: #2e2d74; line-height: 1; display: flex; align-items: center; gap: 8px; }
+.plus-symbol-frame { color: #dc2626; font-size: 26px; display: inline-block; animation: heartPulse 2.5s infinite ease-in-out; }
+@keyframes heartPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+.brand-subtag { font-size: 10.5px; font-weight: 500; color: #64748b; margin-top: 3px; letter-spacing: 0.3px; }
+
+.doc-header-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 10px; border-bottom: 2px solid var(--invoice-blue); padding-bottom: 8px; }
+.company-address-side p, .company-contact-side p { font-size: 10.5px; margin: 0; color: #334155; line-height: 1.35; }
+.company-name-bold { font-weight: 700; font-size: 13px; color: #0f172a; }
+
+/* Custom Dual Line Sky Blue Banner Strip Layer [cite: 4, 9, 12] */
+.gstin-title-banner-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--invoice-blue); font-size: 11.5px; padding: 5px 8px; align-items: center; }
+.document-type-center { font-size: 16px; font-weight: 700; color: var(--invoice-blue); text-transform: uppercase; }
+.copy-state-right { font-size: 9.5px; font-weight: 700; color: #475569; }
+
+/* Split Customer Parameters Tables [cite: 5, 10, 16] */
+.meta-info-split-table { width: 100%; border-collapse: collapse; border: 1px solid var(--invoice-blue); border-top: none; }
+.meta-info-split-table td { padding: 0; }
+.section-table-tag { background-color: var(--invoice-tint); border-bottom: 1px solid var(--invoice-blue); font-size: 11px; font-weight: 700; text-align: center; color: var(--invoice-blue); padding: 2px 0; }
+.nested-clean-table { width: 100%; font-size: 11fr; }
+.nested-clean-table td { padding: 3px 6px; line-height: 1.3; color: #0f172a; vertical-align: top; }
+.data-align-right td { padding: 5px 6px; border-bottom: 1px solid #f1f5f9; }
+.data-align-right tr:last-child td { border-bottom: none; }
+.border-right { border-right: 1px solid var(--invoice-blue) !important; }
+
+/* Product Computation Grid Elements Sheet [cite: 24, 25] */
+.items-calculation-matrix-table { width: 100%; border-collapse: collapse; border: 1px solid var(--invoice-blue); }
+.items-calculation-matrix-table th { background-color: #ffffff; color: var(--invoice-blue); font-size: 10.5px; font-weight: 700; padding: 5px 6px; border-right: 1px solid var(--invoice-blue); border-bottom: 1px solid var(--invoice-blue); text-align: left; }
+.items-calculation-matrix-table th:last-child { border-right: none; }
+.items-calculation-matrix-table .sub-headers-row th { padding: 1px 3px; font-size: 9.5px; text-align: center; }
+.items-calculation-matrix-table td { padding: 6px; font-size: 11px; color: #0f172a; border-right: 1px solid var(--invoice-blue); border-bottom: 1px dashed #e2e8f0; line-height: 1.3; vertical-align: middle; }
+.items-calculation-matrix-table td:last-child { border-right: none; }
+.tfoot-totals-row td { border-top: 2px solid var(--invoice-blue) !important; border-bottom: 1px solid var(--invoice-blue) !important; background-color: #ffffff; padding: 6px; }
+
+/* Dynamic Terms Box & Summary Matrix [cite: 26, 28, 30, 31] */
+.border-sheet-box { border: 1px solid var(--invoice-blue); width: 100%; }
+.summary-breakdown-nested-table { width: 100%; }
+.summary-breakdown-nested-table td { padding: 3px 8px; font-size: 11px; color: #1e293b; }
+.summary-breakdown-nested-table td:last-child { text-align: right; }
+.header-blue-sub-tint { background-color: var(--invoice-tint); }
+.table-nested-clean-bank { width: 100%; font-size: 10.5px; }
+.table-nested-clean-bank td { padding: 1px 2px; }
+.upi-qr-frame { width: 62px; height: 62px; border: 1px solid #cbd5e1; padding: 2px; background: white; }
+.small-words-box { font-size: 10.5px; line-height: 1.25; padding: 8px; }
+
+/* ==========================================
+   AUTHENTIC ELITE PLUS RUBBER STAMP GRAPHIC LAYER [cite: 33]
+   ========================================== */
+.layout-relative-container { position: relative; }
+.elite-rubber-stamp-layer {
+    position: absolute;
+    right: 35%;
+    top: 5px;
+    z-index: 50;
+    pointer-events: none;
+    transform: rotate(-12deg);
+    opacity: 0.82;
+}
+.stamp-circular-frame {
+    width: 85px;
+    height: 85px;
+    border: 3px double #b91c1c;
+    border-radius: 50%;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 24px 16px;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.sidebar-brand {
-    display: flex;
     align-items: center;
-    gap: 12px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #EDF2F7;
-    margin-bottom: 24px;
-}
-
-.brand-logo {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    color: var(--white);
-    border-radius: 10px;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    box-shadow: 0 4px 10px rgba(15, 76, 129, 0.15);
+    color: #b91c1c;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    padding: 2px;
 }
+.stamp-inner-text { font-size: 8px; letter-spacing: 0.5px; border-bottom: 1px solid #b91c1c; width: 100%; text-align: center; }
+.stamp-center-title { font-size: 11px; letter-spacing: 1px; padding-top: 2px; }
 
-.brand-info h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0;
-}
-
-.brand-info p {
-    font-size: 11px;
-    color: #718096;
-    margin: 0;
-}
-
-.sidebar-menu {
-    flex: 1;
-    overflow-y: auto;
-}
-
-.sidebar-menu ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0;
-}
-
-.menu-item a {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    color: #4A5568;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.menu-icon {
-    font-size: 18px;
-    width: 24px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.menu-item a:hover {
-    background-color: rgba(30, 136, 229, 0.06);
-    color: var(--secondary-color);
-}
-
-.menu-item a:hover .menu-icon {
-    transform: scale(1.1);
-}
-
-/* Active State - ग्रॅडिएंट मध्ये नवीन ॲक्सेंट कलर वापरला आहे */
-.menu-item.active a {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    box-shadow: 0 4px 12px rgba(15, 76, 129, 0.15);
-}
-
-.sidebar-footer {
-    padding-top: 16px;
-    border-top: 1px solid #EDF2F7;
-}
-
-.logout-btn {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    color: var(--logout-danger);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    background-color: #FEF2F2;
-}
-
-.logout-btn:hover {
-    background-color: var(--logout-danger);
-    color: var(--white);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
-}
+.z-index-top { position: relative; z-index: 100; }
 
 /* ==========================================
-   MOBILE HEADER STYLE 
+   HIGH QUALITY PDF PRINT HARDWARE COMPONENT OVERRIDES
    ========================================== */
-.mobile-header {
-    display: none;
-    width: 100%;
-    height: 60px;
-    background-color: var(--white);
-    border-bottom: 1px solid var(--border-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1010;
-    padding: 0 20px;
-    justify-content: space-between;
-    align-items: center;
+@media print {
+    body { background: #ffffff !important; padding: 0 !important; margin: 0 !important; }
+    .no-print { display: none !important; }
+    .main-content { margin-left: 0 !important; width: 100% !important; padding: 0 !important; }
+    .document-a4-view-container { margin-top: 0 !important; padding: 0 !important; }
+    .printable-a4-sheet { width: 210mm; min-height: 297mm; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
 
-.mobile-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-.menu-toggle {
-    background: none;
-    border: none;
-    font-size: 22px;
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-/* ==========================================
-   MAIN CONTENT WRAPPER 
-   ========================================== */
-.main-content {
-    margin-left: var(--sidebar-width);
-    padding: 40px;
-    width: calc(100% - var(--sidebar-width));
-    transition: all 0.4s ease;
-}
-
-/* Responsive Grid Logic (Responsive Engine) */
+/* Responsive Overrides layout calculations */
 @media (max-width: 991px) {
     .mobile-header { display: flex; }
     .sidebar { transform: translateX(-100%); }
-    
-    /* Active Mobile Sidebar */
-    .sidebar.open { 
-        transform: translateX(0); 
-        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.08); 
-    }
-    .main-content { 
-        margin-left: 0; 
-        width: 100%; 
-        padding: 90px 20px 20px 20px; 
-    }
+    .sidebar.open { transform: translateX(0); }
+    .main-content { margin-left: 0; width: 100%; padding: 80px 12px 12px 12px; }
+    .document-a4-view-container { overflow-x: auto; justify-content: flex-start; }
 }

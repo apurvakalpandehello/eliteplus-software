@@ -3,98 +3,479 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel | Layout</title>
+  <title>Admin Panel | Elite Plus Quotation Engine</title>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="company-profile.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  
+  <style>
+    /* --- SHARED SYSTEM DESIGN SYSTEM --- */
+    :root {
+        --primary-color: #0F4C81;
+        --secondary-color: #1E88E5;
+        --accent-color: #00ACC1;
+        --background-color: #F8FAFC;
+        --text-color: #1F2937;
+        --border-color: #CBD5E1;
+        --white: #FFFFFF;
+        --sidebar-width: 260px;
+        --logout-danger: #EF4444;
+        
+        /* Elite Plus Color Codes matching scanned copy */
+        --ep-blue: #0284c7;
+        --ep-blue-tint: #f0f9ff;
+        --ep-navy: #3b3a86;
+        --ep-red: #e11d48;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--background-color); color: var(--text-color); display: flex; min-height: 100vh; overflow-x: hidden; }
+
+    /* --- SIDEBAR WORKSPACE MASTER LAYOUT --- */
+    .sidebar {
+        width: var(--sidebar-width); height: 100vh; background-color: var(--white); border-right: 1px solid var(--border-color);
+        display: flex; flex-direction: column; position: fixed; top: 0; left: 0; z-index: 1000; padding: 24px 16px;
+        transition: all 0.4s ease;
+    }
+    .sidebar-brand { display: flex; align-items: center; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #EDF2F7; margin-bottom: 24px; }
+    .brand-logo {
+        width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: var(--white); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 18px;
+    }
+    .brand-info h3 { font-size: 16px; font-weight: 700; color: var(--primary-color); margin: 0; }
+    .brand-info p { font-size: 11px; color: #718096; margin: 0; }
+    .sidebar-menu { flex: 1; overflow-y: auto; }
+    .sidebar-menu ul { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; }
+    .menu-item a { display: flex; align-items: center; gap: 14px; padding: 12px 16px; color: #4A5568; text-decoration: none; font-size: 14px; font-weight: 500; border-radius: 10px; }
+    .menu-item.active a { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--white); }
+    .sidebar-footer { padding-top: 16px; border-top: 1px solid #EDF2F7; }
+    .logout-btn { display: flex; align-items: center; gap: 14px; padding: 12px 16px; color: var(--logout-danger); text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 10px; background-color: #FEF2F2; }
+
+    .mobile-header {
+        display: none; width: 100%; height: 60px; background-color: var(--white); border-bottom: 1px solid var(--border-color);
+        position: fixed; top: 0; left: 0; z-index: 1010; padding: 0 20px; justify-content: space-between; align-items: center;
+    }
+    .mobile-logo { display: flex; align-items: center; gap: 10px; color: var(--primary-color); font-weight: 700; }
+    .menu-toggle { background: none; border: none; font-size: 22px; color: var(--primary-color); cursor: pointer; }
+
+    .main-content { margin-left: var(--sidebar-width); padding: 40px; width: calc(100% - var(--sidebar-width)); transition: all 0.4s ease; }
+
+    /* --- MODULE 1: INTERACTIVE CREATION REGISTRY FORM --- */
+    .animate-fade-in { animation: smoothFadeUp 0.4s ease forwards; }
+    @keyframes smoothFadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .master-card { background: var(--white); border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
+    .master-card-header { padding: 18px 24px; background-color: var(--white); border-bottom: 1px solid #E5E7EB; }
+    .master-title { font-size: 20px; font-weight: 600; color: var(--text-color); margin: 0; }
+    .master-card-body { padding: 24px; }
+    
+    .form-group-custom { display: flex; flex-direction: column; gap: 6px; }
+    .form-label-custom { font-size: 13.5px; font-weight: 600; color: #475569; }
+    .form-input-custom { width: 100%; padding: 10px 14px; font-size: 14px; border-radius: 8px; border: 1px solid #CBD5E1; transition: all 0.2s ease; }
+    .form-input-custom:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(30,136,229,0.12); }
+    .rows-textarea { resize: none; min-height: 52px; }
+    
+    .table-custom { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .table-custom th { background-color: #F8FAFC; padding: 12px 16px; font-weight: 600; border-bottom: 2px solid #E2E8F0; text-align: left; }
+    .table-custom td { padding: 10px 16px; border-bottom: 1px solid #E2E8F0; vertical-align: middle; }
+    
+    .btn-save-account { background-color: #1E75FF; color: var(--white); border: none; padding: 12px 28px; border-radius: 6px; font-weight: 500; transition: all 0.2s; }
+    .btn-save-account:hover { background-color: #0056E0; transform: translateY(-1px); }
+
+    /* --- MODULE 2: BLUE ACCENT A4 PRINT MATRIX SCHEMATIC --- */
+    #eliteQuotationPrintView { display: none; background: white; padding: 0; margin: 0; }
+    .a4-container { width: 210mm; min-height: 297mm; padding: 20mm 15mm; margin: 0 auto; background: white; position: relative; border: 1px solid var(--ep-blue); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    
+    .letterhead-header { display: grid; grid-template-columns: 1.1fr 1fr 0.9fr; gap: 15px; border-bottom: 2px solid var(--ep-blue); padding-bottom: 12px; }
+    .logo-area .title-main { font-size: 32px; font-weight: 700; color: var(--ep-navy); line-height: 1; margin: 0; }
+    .logo-area .title-main span { color: var(--ep-red); font-weight: 800; }
+    .logo-area p { font-size: 11px; font-weight: 500; color: #475569; margin: 4px 0 0 0; }
+    .header-address, .header-contacts { font-size: 11px; line-height: 1.4; color: #334155; margin: 0; }
+    
+    .gst-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--ep-blue); padding: 5px 10px; font-size: 12px; font-weight: 600; margin-top: 15px; align-items: center; }
+    .gst-banner .center-title { font-size: 18px; font-weight: 700; text-transform: uppercase; color: var(--ep-blue); text-align: center; }
+    
+    .details-split-table { width: 100%; border-collapse: collapse; border: 1px solid var(--ep-blue); border-top: none; font-size: 11.5px; }
+    .details-split-table td { padding: 0; vertical-align: top; }
+    .table-tag { background: var(--ep-blue-tint); text-align: center; color: var(--ep-blue); font-weight: 700; padding: 4px 0; border-bottom: 1px solid var(--ep-blue); font-size: 11px; }
+
+    .print-matrix-table { width: 100%; border-collapse: collapse; border: 1px solid var(--ep-blue); margin-top: 5px; font-size: 11.5px; }
+    .print-matrix-table th { background: white; color: var(--ep-blue); padding: 6px 4px; border-right: 1px solid var(--ep-blue); border-bottom: 1px solid var(--ep-blue); font-weight: 700; text-align: center; }
+    .print-matrix-table td { padding: 6px 8px; border-right: 1px solid var(--ep-blue); border-bottom: 1px solid #E2E8F0; vertical-align: middle; }
+    .print-matrix-table tr:last-child td { border-bottom: 1px solid var(--ep-blue); }
+    
+    .totals-box-grid { display: grid; grid-template-columns: 1.2fr 1fr; border: 1px solid var(--ep-blue); border-top: none; font-size: 11.5px; }
+    .totals-box-grid .words-pane { padding: 10px; border-right: 1px solid var(--ep-blue); font-family: monospace; }
+    .nested-sum-table { width: 100%; border-collapse: collapse; }
+    .nested-sum-table td { padding: 5px 10px; }
+    .nested-sum-table tr:not(:last-child) td { border-bottom: 1px solid #E2E8F0; }
+    
+    .bottom-legal-grid { display: grid; grid-template-columns: 1.2fr 1fr; border: 1px solid var(--ep-blue); border-top: none; font-size: 11px; }
+    .bank-pane { padding: 10px; border-right: 1px solid var(--ep-blue); background-color: var(--ep-blue-tint); }
+    .sign-pane { padding: 10px; display: flex; flex-direction: column; justify-content: space-between; text-align: right; position: relative; }
+    
+    /* --- VECTOR SEAL ROUND STAMP COMPONENT --- */
+    .stamp-container { position: absolute; right: 35px; bottom: 25px; width: 105px; height: 105px; pointer-events: none; opacity: 0.85; z-index: 10; }
+    .round-stamp { width: 100%; height: 100%; object-fit: contain; transform: rotate(-4deg); }
+
+    .terms-qr-strip { display: grid; grid-template-columns: 1.4fr 0.6fr; border: 1px solid var(--ep-blue); border-top: none; padding: 10px; font-size: 11px; align-items: center; }
+    .qr-holder { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+    .qr-img { width: 68px; height: 68px; border: 1px solid var(--border-color); padding: 2px; background: white; }
+
+    /* --- RESPONSIVE TOGGLE MEDIA RULES --- */
+    @media (max-width: 991px) {
+        .mobile-header { display: flex; }
+        .sidebar { transform: translateX(-100%); }
+        .sidebar.open { transform: translateX(0); }
+        .main-content { margin-left: 0; width: 100%; padding: 85px 16px 16px 16px; }
+    }
+
+    /* --- HIGH RESOLUTION PRINT HARDWARE TARGET RULES --- */
+    @media print {
+        body, .main-content { background: white; padding: 0; margin: 0; width: 100%; }
+        .no-print { display: none !important; }
+        #eliteQuotationFormWorkspace { display: none !important; }
+        #eliteQuotationPrintView { display: block !important; }
+        .a4-container { border: none; box-shadow: none; padding: 0; margin: 0; width: 100%; }
+        * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="mobile-header">
-    <div class="mobile-logo">
-      <i class="fa-solid fa-user-shield"></i>
-      <span>AdminPanel</span>
-    </div>
-    <button class="menu-toggle" id="menuToggle">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+  <header class="mobile-header no-print">
+    <div class="mobile-logo"><i class="fa-solid fa-user-shield"></i><span>AdminPanel</span></div>
+    <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
   </header>
 
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar no-print" id="sidebar">
     <div class="sidebar-brand">
-      <div class="brand-logo">
-        <i class="fa-solid fa-user-shield"></i>
-      </div>
-      <div class="brand-info">
-        <h3>ElitePlus</h3>
-        <p>Management System</p>
-      </div>
+      <div class="brand-logo"><i class="fa-solid fa-user-shield"></i></div>
+      <div class="brand-info"><h3>ElitePlus</h3><p>Management System</p></div>
     </div>
-
     <nav class="sidebar-menu">
       <ul>
-        <li class="menu-item">
-          <a href="dashboard.html">
-            <i class="fa-solid fa-chart-pie menu-icon"></i>
-            <span class="menu-text">Dashboard</span>
-          </a>
-        </li>
-        <li class="menu-item active">
-          <a href="company-profile.html">
-            <i class="fa-solid fa-building menu-icon"></i>
-            <span class="menu-text">Company Profile</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="account-master.html">
-            <i class="fa-solid fa-file-invoice-dollar menu-icon"></i>
-            <span class="menu-text">Account Master</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="item-master.html">
-            <i class="fa-solid fa-boxes-stacked menu-icon"></i>
-            <span class="menu-text">Item Master</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="user-management.html">
-            <i class="fa-solid fa-users-gear menu-icon"></i>
-            <span class="menu-text">User Management</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="client-management.html">
-            <i class="fa-solid fa-handshake menu-icon"></i>
-            <span class="menu-text">Client Management</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="quotation.html">
-            <i class="fa-solid fa-file-lines menu-icon"></i>
-            <span class="menu-text">Quotation</span>
-          </a>
-        </li>
+        <li class="menu-item"><a href="dashboard.html"><i class="fa-solid fa-chart-pie menu-icon"></i><span>Dashboard</span></a></li>
+        <li class="menu-item"><a href="company-profile.html"><i class="fa-solid fa-building menu-icon"></i><span>Company Profile</span></a></li>
+        <li class="menu-item"><a href="account-master.html"><i class="fa-solid fa-file-invoice-dollar menu-icon"></i><span>Account Master</span></a></li>
+        <li class="menu-item"><a href="item-master.html"><i class="fa-solid fa-boxes-stacked menu-icon"></i><span>Item Master</span></a></li>
+        <li class="menu-item"><a href="user-management.html"><i class="fa-solid fa-users-gear menu-icon"></i><span>User Management</span></a></li>
+        <li class="menu-item"><a href="client-management.html"><i class="fa-solid fa-handshake menu-icon"></i><span>Client Management</span></a></li>
+        <li class="menu-item active"><a href="quotation.html"><i class="fa-solid fa-file-lines menu-icon"></i><span>Quotation</span></a></li>
       </ul>
     </nav>
-
     <div class="sidebar-footer">
-      <a href="logout.html" class="logout-btn">
-        <i class="fa-solid fa-right-from-bracket menu-icon"></i>
-        <span class="menu-text">Logout</span>
-      </a>
+      <a href="logout.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket menu-icon"></i><span>Logout</span></a>
     </div>
   </aside>
 
   <main class="main-content">
     <div class="container-fluid px-0">
-      
+
+      <div id="eliteQuotationFormWorkspace" class="animate-fade-in">
+        <div class="mb-4">
+          <h1 class="fw-bold text-dark fs-3 mb-1">Commercial Quotation Builder</h1>
+          <p class="text-secondary small m-0">Populate parameters from data registries automatically or fill cells manually</p>
+        </div>
+
+        <form id="quotationEntryForm">
+          
+          <div class="master-card mb-4">
+            <div class="master-card-body">
+              <div class="row g-3">
+                <div class="col-12 col-md-3">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Quotation Number</label>
+                    <input type="text" id="formQuoteNo" class="form-input-custom fw-bold font-monospace text-primary" value="QTN/1/25-26" required>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Quotation Date</label>
+                    <input type="date" id="formQuoteDate" class="form-input-custom" required>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Completion Date</label>
+                    <input type="date" id="formCompletionDate" class="form-input-custom" required>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Copy Document Copy Mode</label>
+                    <select id="formPrintMode" class="form-input-custom">
+                      <option value="ORIGINAL FOR RECIPIENT" selected>Original for Recipient</option>
+                      <option value="DUPLICATE COPY">Duplicate Copy</option>
+                      <option value="TRANSPORT COPY">Transport Copy</option>
+                      <option value="OFFICE COPY">Office Copy</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="master-card mb-4">
+            <div class="master-card-header"><h3 class="master-title fs-6 text-primary"><i class="fa-solid fa-address-book me-2"></i>Customer Profile Mapping</h3></div>
+            <div class="master-card-body">
+              <div class="row g-3">
+                <div class="col-12 col-md-4">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Auto-Fetch Client Account</label>
+                    <select id="formClientSelector" class="form-input-custom">
+                      <option value="MANUAL" selected>-- Manual Override Entry (Type Below) --</option>
+                      <option value="CUST-01">Jeevansetu Lifecare Pvt Ltd</option>
+                      <option value="CUST-02">Apex Healthcare Global</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-12 col-md-8">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Customer Corporate Name</label>
+                    <input type="text" id="formClientName" class="form-input-custom" placeholder="Type customer or company identity name" required>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Full Billing / Shipping Address</label>
+                    <textarea id="formClientAddress" class="form-input-custom rows-textarea" rows="2" placeholder="Type destination and registration lines..." required></textarea>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Contact Phone</label>
+                    <input type="text" id="formClientPhone" class="form-input-custom" placeholder="Phone identity sequence">
+                  </div>
+                </div>
+                <div class="col-12 col-md-3">
+                  <div class="form-group-custom">
+                    <label class="form-label-custom">Place of Supply</label>
+                    <input type="text" id="formClientState" class="form-input-custom" value="Maharashtra ( 27 )" placeholder="State name ( State Code )">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="master-card mb-4">
+            <div class="master-card-header d-flex justify-content-between align-items-center">
+              <h3 class="master-title fs-6 text-primary"><i class="fa-solid fa-boxes-packing me-2"></i>Line Item Configuration Matrix</h3>
+              <button type="button" class="btn btn-primary btn-sm rounded-2" id="addNewLineBtn"><i class="fa-solid fa-plus me-1"></i> Add Product Line</button>
+            </div>
+            <div class="master-card-body p-0">
+              <div class="table-responsive-custom">
+                <table class="table-custom text-nowrap" id="formItemsTable">
+                  <thead>
+                    <tr>
+                      <th>Product Sync / Name of Product / Service Specifications</th>
+                      <th style="width: 110px;">HSN / SAC</th>
+                      <th style="width: 100px;">Qty</th>
+                      <th style="width: 130px;">Rate (₹)</th>
+                      <th style="width: 90px;">GST %</th>
+                      <th style="width: 130px; text-align: right;">Gross Total (₹)</th>
+                      <th style="width: 50px; text-align: center;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="formItemsTableBody">
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-success px-4" id="btnActionWhatsapp"><i class="fa-brands fa-whatsapp me-2"></i>Share WhatsApp</button>
+              <button type="button" class="btn btn-warning text-white px-4" id="btnActionEmail"><i class="fa-solid fa-envelope me-2"></i>Mailing Invoice</button>
+            </div>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-secondary px-4" id="btnResetForm">Reset Form</button>
+              <button type="submit" class="btn-save-account"><i class="fa-solid fa-eye me-2"></i>Generate A4 Client Preview</button>
+            </div>
+          </div>
+        </form>
       </div>
+
+      <div id="eliteQuotationPrintView">
+        
+        <div class="alert alert-info d-flex justify-content-between align-items-center no-print border-0 shadow-sm mb-4 bg-white p-3 rounded-3" style="border-left: 4px solid var(--ep-blue) !important;">
+          <div class="small"><i class="fa-solid fa-circle-info text-primary me-2 fs-5"></i><strong>A4 Live Layout Compiled!</strong> Verify calculations below.</div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm" id="backToFormBtn"><i class="fa-solid fa-rotate-left me-1"></i> Back & Modify</button>
+            <button class="btn btn-warning btn-sm text-white px-3" id="triggerDownloadPDFBtn"><i class="fa-solid fa-file-pdf me-1"></i> Download PDF</button>
+            <button class="btn btn-primary btn-sm px-4" style="background-color: var(--ep-blue); border: none;" id="triggerPrintSystemBtn"><i class="fa-solid fa-print me-1"></i> Print Document</button>
+          </div>
+        </div>
+
+        <div class="a4-container">
+          
+          <div class="letterhead-header">
+            <div class="logo-area">
+              <h1 class="title-main">Elite <span>+</span> Plus<sup>®</sup></h1>
+              <p>Empowering Healthcare Education</p>
+            </div>
+            <div class="header-address">
+              <span class="fw-bold text-dark d-block mb-1" style="font-size:12px;">Elite Plus</span>
+              Ph-iii Fl. No. F-116 Sr. No. 1/5 1/6<br>
+              Laxmi Shantiban, NDA Road, Shivane<br>
+              Pune, Maharashtra - 411023<br>
+              <strong>UDYAM-MH-26-0082647</strong>
+            </div>
+            <div class="header-contacts text-end">
+              <div style="height:15px;"></div>
+              <strong>Phone :</strong> 9890017812 | 020-25291213<br>
+              <strong>Email :</strong> elite.pune@gmail.com<br>
+              <strong>Website :</strong> www.eliteplus.in
+            </div>
+          </div>
+
+          <div class="gst-banner">
+            <div><strong>GSTIN :</strong> 27AFOPT4320F1ZB</div>
+            <div class="center-title">Quotation</div>
+            <div class="text-end" id="printCopyLabel">ORIGINAL FOR RECIPIENT</div>
+          </div>
+
+          <table class="details-split-table">
+            <tbody>
+              <tr>
+                <td class="w-50 border-right">
+                  <div class="table-tag">Customer Detail</div>
+                  <table class="w-100" style="font-size: 11px; line-height: 1.4;">
+                    <tr><td style="width: 85px; font-weight: bold; padding: 4px 6px;">Name</td><td style="padding: 4px 6px;">: <span id="pClientName" class="fw-bold"></span></td></tr>
+                    <tr><td style="font-weight: bold; padding: 4px 6px; vertical-align: top;">Address</td><td style="padding: 4px 6px;">: <span id="pClientAddress"></span></td></tr>
+                    <tr><td style="font-weight: bold; padding: 4px 6px;">Phone</td><td style="padding: 4px 6px;">: <span id="pClientPhone"></span></td></tr>
+                    <tr><td style="font-weight: bold; padding: 4px 6px;">GSTIN</td><td style="padding: 4px 6px;">: -</td></tr>
+                    <tr><td style="font-weight: bold; padding: 4px 6px;">Place of Supply</td><td style="padding: 4px 6px;">: <span id="pClientState"></span></td></tr>
+                  </table>
+                </td>
+                <td class="w-50">
+                  <table class="w-100" style="font-size: 11px; line-height: 1.6;">
+                    <tr><td style="font-weight: bold; padding: 4px 6px; border-bottom: 1px solid #E2E8F0; width:100px;">Quotation No.</td><td style="padding: 4px 6px; border-bottom: 1px solid #E2E8F0; color: #000; font-weight: 700;">: <span id="pQuoteNo"></span></td></tr>
+                    <tr><td style="font-weight: bold; padding: 4px 6px; border-bottom: 1px solid #E2E8F0;">Quotation Date</td><td style="padding: 4px 6px; border-bottom: 1px solid #E2E8F0;">: <span id="pQuoteDate"></span></td></tr>
+                    <tr><td style="font-weight: bold; padding: 4px 6px; border-bottom: 1px solid #E2E8F0;">Completion Date</td><td style="padding: 4px 6px; border-bottom: 1px solid #E2E8F0;">: <span id="pCompletionDate"></span></td></tr>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="print-matrix-table">
+            <thead>
+              <tr>
+                <th rowspan="2" style="width: 35px;">Sr. No.</th>
+                <th rowspan="2">Name of Product / Service</th>
+                <th rowspan="2" style="width: 75px;">HSN / SAC</th>
+                <th rowspan="2" style="width: 65px;">Qty</th>
+                <th rowspan="2" style="width: 85px;">Rate</th>
+                <th rowspan="2" style="width: 90px;">Taxable Value</th>
+                <th colspan="2" style="width: 95px; border-bottom: 1px solid var(--ep-blue);">CGST</th>
+                <th colspan="2" style="width: 95px; border-bottom: 1px solid var(--ep-blue);">SGST</th>
+                <th rowspan="2" style="width: 100px;">Total</th>
+              </tr>
+              <tr>
+                <th style="width: 30px; font-size: 9px; border-right: 1px solid var(--ep-blue);">%</th>
+                <th style="width: 65px; font-size: 9px; border-right: 1px solid var(--ep-blue);">Amount</th>
+                <th style="width: 30px; font-size: 9px; border-right: 1px solid var(--ep-blue);">%</th>
+                <th style="width: 65px; font-size: 9px;">Amount</th>
+              </tr>
+            </thead>
+            <tbody id="printMatrixTableBody">
+              </tbody>
+            <tfoot>
+              <tr style="font-weight: bold; background: white; border-top: 2px solid var(--ep-blue);">
+                <td colspan="2" style="text-align: left; padding: 6px;">Total</td>
+                <td></td><td></td><td></td>
+                <td style="text-align: right; padding: 6px;" id="pTotalTaxable">0.00</td>
+                <td></td>
+                <td style="text-align: right; padding: 6px;" id="pTotalCGST">0.00</td>
+                <td></td>
+                <td style="text-align: right; padding: 6px;" id="pTotalSGST">0.00</td>
+                <td style="text-align: right; padding: 6px;" id="pTotalGrand">0.00</td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <div class="totals-box-grid">
+            <div class="words-pane">
+              <strong style="font-size: 10px; color:#475569; display:block; margin-bottom:2px;">Total in words</strong>
+              <div id="pAmountInWords" style="font-weight: 700; color:#0F172A; line-height: 1.2; text-transform: uppercase; font-size:11px;"></div>
+            </div>
+            <div>
+              <table class="nested-sum-table font-monospace" style="font-size:11px;">
+                <tr><td>Taxable Amount</td><td class="text-end fw-bold" id="pSummaryTaxable">0.00</td></tr>
+                <tr><td>Add: CGST</td><td class="text-end" id="pSummaryCGST">0.00</td></tr>
+                <tr><td>Add: SGST</td><td class="text-end" id="pSummarySGST">0.00</td></tr>
+                <tr style="font-weight: bold; background: #F8FAFC; border-top: 1px solid var(--ep-blue);"><td>Total Tax</td><td class="text-end" id="pSummaryTaxTotal">0.00</td></tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="bottom-legal-grid">
+            <div class="bank-pane">
+              <strong style="font-size: 11.5px; color: var(--ep-blue); display:block; margin-bottom: 4px;"><i class="fa-solid fa-building-columns me-1"></i>Bank Details</strong>
+              <table style="width: 100%; font-size: 11px; line-height: 1.35;">
+                <tr><td style="width: 80px; font-weight:bold;">Name</td><td>: IDBI Bank</td></tr>
+                <tr><td style="font-weight:bold;">Branch</td><td>: Warje, Pune</td></tr>
+                <tr><td style="font-weight:bold;">Acc. Number</td><td>: 0787102000005364</td></tr>
+                <tr><td style="font-weight:bold;">IFSC</td><td>: IBKL0000787</td></tr>
+                <tr><td style="font-weight:bold;">UPI ID</td><td>: rajesh.tiwari17-3@okhdfcbank</td></tr>
+              </table>
+            </div>
+            <div class="sign-pane">
+              <div class="text-muted fst-italic" style="font-size: 10px;">(E & O.E.)</div>
+              <div>
+                <span class="d-block text-muted" style="font-size: 9px; line-height:1.1;">Certified that the particulars given above are true and correct.</span>
+                <strong class="d-block text-dark mt-1" style="font-size: 12px; font-weight:700;">For Elite Plus</strong>
+                
+                <div style="height: 44px;"></div>
+                <span class="d-block text-muted pt-1 border-top mx-auto ms-auto text-center" style="width: 130px; font-size: 10.5px;">Authorised Signatory</span>
+              </div>
+
+              <div class="stamp-container">
+                <svg class="round-stamp" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(2, 132, 199, 0.4)" stroke-width="2" stroke-dasharray="3,1"/>
+                  <circle cx="50" cy="50" r="41" fill="none" stroke="rgba(2, 132, 199, 0.4)" stroke-width="1.2"/>
+                  <path id="textCirclePath" d="M 12,50 A 38,38 0 1,1 88,50 A 38,38 0 1,1 12,50" fill="none"/>
+                  <text fill="rgba(2, 132, 199, 0.55)" font-family="monospace" font-size="7.5" font-weight="bold">
+                    <textPath href="#textCirclePath" startOffset="8%">* ELITE PLUS * MEDICAL EDUCATION PUNE</textPath>
+                  </text>
+                  <circle cx="50" cy="50" r="23" fill="none" stroke="rgba(2, 132, 199, 0.3)" stroke-width="0.8"/>
+                  <text x="50" y="47" text-anchor="middle" fill="rgba(2, 132, 199, 0.55)" font-size="7" font-weight="700" letter-spacing="0.5">OFFICIAL</text>
+                  <text x="50" y="58" text-anchor="middle" fill="rgba(2, 132, 199, 0.55)" font-size="6.5" font-weight="700" letter-spacing="0.5">STAMP</text>
+                </svg>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="terms-qr-strip">
+            <div>
+              <strong style="color: #0F172A; display:block; margin-bottom: 2px; font-size:11.5px;">Terms & Conditions</strong>
+              <ul class="m-0 ps-3 text-muted" style="font-size: 10.5px; line-height: 1.45;">
+                <li>Packing, Forwarding and Transport Charges Extra.</li>
+                <li>Delivery within 6-7 weeks after receipt of Purchase Order.</li>
+                <li>Payment 100% advanced.</li>
+                <li>Disputes, if any, are subject to PUNE Jurisdiction.</li>
+                <li>Quotation Validity 30 Days.</li>
+              </ul>
+            </div>
+            <div class="qr-holder">
+              <div class="text-end text-muted font-monospace" style="font-size: 9.5px; line-height:1.15;">Pay using UPI<br><span class="text-primary fw-bold">Pune 10</span></div>
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=65x65&data=upi://pay?pa=rajesh.tiwari17-3@okhdfcbank&pn=ElitePlus" class="qr-img" alt="UPI Code">
+            </div>
+          </div>
+
+          <p class="text-center text-muted m-0 mt-3 font-monospace" style="font-size: 9px;">This is a computer-generated document. No signature is required.</p>
+
+        </div>
+      </div>
+
+    </div>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bundle.min.js"></script>
-  <script src="company-profile.js"></script>
+  <script src="quotation.js"></script>
 </body>
 </html>

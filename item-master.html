@@ -1,100 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel | Layout</title>
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="company-profile.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Item Master</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="item-master.css">
 </head>
 <body>
 
-  <header class="mobile-header">
-    <div class="mobile-logo">
-      <i class="fa-solid fa-user-shield"></i>
-      <span>AdminPanel</span>
-    </div>
-    <button class="menu-toggle" id="menuToggle">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </header>
+    <header class="mobile-header">
+        <div class="mobile-logo">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>AdminPanel</span>
+        </div>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
 
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-brand">
-      <div class="brand-logo">
-        <i class="fa-solid fa-user-shield"></i>
-      </div>
-      <div class="brand-info">
-        <h3>ElitePlus</h3>
-        <p>Management System</p>
-      </div>
-    </div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-logo">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div class="brand-info">
+                <h3>ElitePlus</h3>
+                <p>Management System</p>
+            </div>
+        </div>
 
-    <nav class="sidebar-menu">
-      <ul>
-        <li class="menu-item">
-          <a href="dashboard.html">
-            <i class="fa-solid fa-chart-pie menu-icon"></i>
-            <span class="menu-text">Dashboard</span>
-          </a>
-        </li>
-        <li class="menu-item active">
-          <a href="company-profile.html">
-            <i class="fa-solid fa-building menu-icon"></i>
-            <span class="menu-text">Company Profile</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="account-master.html">
-            <i class="fa-solid fa-file-invoice-dollar menu-icon"></i>
-            <span class="menu-text">Account Master</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="item-master.html">
-            <i class="fa-solid fa-boxes-stacked menu-icon"></i>
-            <span class="menu-text">Item Master</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="user-management.html">
-            <i class="fa-solid fa-users-gear menu-icon"></i>
-            <span class="menu-text">User Management</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="client-management.html">
-            <i class="fa-solid fa-handshake menu-icon"></i>
-            <span class="menu-text">Client Management</span>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="quotation.html">
-            <i class="fa-solid fa-file-lines menu-icon"></i>
-            <span class="menu-text">Quotation</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+        <nav class="sidebar-menu">
+            <ul>
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <i class="fa-solid fa-chart-pie menu-icon"></i>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="company-profile.html">
+                        <i class="fa-solid fa-building menu-icon"></i>
+                        <span class="menu-text">Company Profile</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="account-master.html">
+                        <i class="fa-solid fa-file-invoice-dollar menu-icon"></i>
+                        <span class="menu-text">Account Master</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a href="item-master.html">
+                        <i class="fa-solid fa-boxes-stacked menu-icon"></i>
+                        <span class="menu-text">Item Master</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="user-management.html">
+                        <i class="fa-solid fa-users-gear menu-icon"></i>
+                        <span class="menu-text">User Management</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="client-management.html">
+                        <i class="fa-solid fa-handshake menu-icon"></i>
+                        <span class="menu-text">Client Management</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="quotation.html">
+                        <i class="fa-solid fa-file-lines menu-icon"></i>
+                        <span class="menu-text">Quotation</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-    <div class="sidebar-footer">
-      <a href="logout.html" class="logout-btn">
-        <i class="fa-solid fa-right-from-bracket menu-icon"></i>
-        <span class="menu-text">Logout</span>
-      </a>
-    </div>
-  </aside>
+        <div class="sidebar-footer">
+            <a href="logout.html" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket menu-icon"></i>
+                <span class="menu-text">Logout</span>
+            </a>
+        </div>
+    </aside>
 
-  <main class="main-content">
-    <div class="container-fluid px-0">
-      
-      </div>
-  </main>
+    <main class="main-content">
+        <div class="dashboard-wrapper">
+            
+            <div class="dashboard-header">
+                <div>
+                    <h1>Item Master</h1>
+                    <p>Real-time setup layout, manage items parameters, and inventory logging</p>
+                </div>
+            </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bundle.min.js"></script>
-  <script src="company-profile.js"></script>
+            <div class="form-panel transition-card" id="formContainer">
+                <div class="panel-header-simple">
+                    <h3><i class="fa-solid fa-circle-plus header-accent-icon"></i> Item Specification details</h3>
+                </div>
+                
+                <form id="itemMasterForm" class="master-grid-form">
+                    <div class="form-group-custom">
+                        <label>Item Name</label>
+                        <input type="text" id="firstInput" class="input-field-custom" required placeholder="e.g., CPR Manikin">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Item Code</label>
+                        <input type="text" class="input-field-custom" required placeholder="e.g., CPR-001">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Print Name</label>
+                        <input type="text" class="input-field-custom" placeholder="Name on generated document">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Item Type</label>
+                        <select class="input-field-custom">
+                            <option>Product</option>
+                            <option>Service</option>
+                            <option>Consumable</option>
+                            <option>Capital Item</option>
+                            <option>Spare Part</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Brand</label>
+                        <input type="text" class="input-field-custom" placeholder="Enter Brand Name">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Group / Category</label>
+                        <input type="text" class="input-field-custom" placeholder="e.g., Medical Training">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Opening Qty</label>
+                        <input type="number" class="input-field-custom" placeholder="0">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Stock Value</label>
+                        <input type="number" class="input-field-custom" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Sales Price</label>
+                        <input type="number" class="input-field-custom" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Purchase Price</label>
+                        <input type="number" class="input-field-custom" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>MRP</label>
+                        <input type="number" class="input-field-custom" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Tax Category</label>
+                        <select class="input-field-custom">
+                            <option>GST 0%</option>
+                            <option>GST 5%</option>
+                            <option>GST 12%</option>
+                            <option>GST 18%</option>
+                            <option>GST 28%</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>HSN / SAC Code</label>
+                        <input type="text" class="input-field-custom" placeholder="8-digit index code">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Warranty</label>
+                        <input type="text" class="input-field-custom" placeholder="e.g., 1 Year Limited">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Packing Parameter</label>
+                        <input type="text" class="input-field-custom" placeholder="Box / Piece / Set">
+                    </div>
+
+                    <div class="form-group-custom grid-col-span-full">
+                        <label>Item Specification</label>
+                        <textarea class="textarea-field-custom" rows="3" placeholder="Enter extensive description details..."></textarea>
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Item Image</label>
+                        <div class="modern-file-wrapper">
+                            <input type="file" id="itemImg" class="file-hidden" accept="image/*">
+                            <label for="itemImg" class="file-mock-btn"><i class="fa-solid fa-image"></i> Upload Image</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Video Link</label>
+                        <input type="url" class="input-field-custom" placeholder="https://youtube.com/...">
+                    </div>
+
+                    <div class="form-group-custom">
+                        <label>Brochure (PDF)</label>
+                        <div class="modern-file-wrapper">
+                            <input type="file" id="itemPdf" class="file-hidden" accept="application/pdf">
+                            <label for="itemPdf" class="file-mock-btn mock-pdf"><i class="fa-solid fa-file-pdf"></i> Upload PDF</label>
+                        </div>
+                    </div>
+
+                    <div class="form-action-row grid-col-span-full">
+                        <button type="submit" class="action-btn-submit"><i class="fa-solid fa-floppy-disk"></i> Save Item</button>
+                        <button type="reset" class="action-btn-reset"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-panel transition-card">
+                <div class="panel-header-simple">
+                    <h3><i class="fa-solid fa-boxes-stacked header-accent-icon icon-alt"></i> Item List</h3>
+                    <button class="btn-add-new-trigger" id="addNewDetailsBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Add New Item</span>
+                    </button>
+                </div>
+                
+                <div class="responsive-table-container">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Code</th>
+                                <th>Type</th>
+                                <th>Brand</th>
+                                <th>Group</th>
+                                <th>Sales Price</th>
+                                <th>Stock</th>
+                                <th style="text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+<script src="item-master.js"></script>   
 </body>
 </html>
