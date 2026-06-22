@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
 
     <!-- Mobile Header -->
@@ -70,12 +72,6 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="client-management.html">
-                        <i class="fa-solid fa-handshake menu-icon"></i>
-                        <span class="menu-text">Client Management</span>
-                    </a>
-                </li>
-                <li class="menu-item">
                     <a href="quotation.html">
                         <i class="fa-solid fa-file-lines menu-icon"></i>
                         <span class="menu-text">Quotation</span>
@@ -95,7 +91,7 @@
     <!-- Main Workspace -->
     <main class="main-content">
         <div class="dashboard-wrapper">
-            
+
             <!-- Dashboard Modern Header -->
             <div class="dashboard-header">
                 <div>
@@ -157,7 +153,7 @@
 
             <!-- New Extended Features Layout Grid -->
             <div class="dashboard-extended-grid">
-                
+
                 <!-- Widget 1: Quick Productivity Shortcuts -->
                 <div class="extended-card">
                     <div class="ext-card-header">
@@ -171,10 +167,10 @@
                                 <p>Generate new client invoice proposal</p>
                             </div>
                         </a>
-                        <a href="client-management.html" class="shortcut-item">
+                        <a href="user-management.html" class="shortcut-item">
                             <div class="shortcut-icon icon-green"><i class="fa-solid fa-user-plus"></i></div>
                             <div class="shortcut-details">
-                                <h4>Add New Client</h4>
+                                <h4>Add New Users</h4>
                                 <p>Register a company or vendor profile</p>
                             </div>
                         </a>
@@ -218,6 +214,17 @@
                     </div>
                 </div>
 
+
+                <div class="extended-card" style="grid-column: 1 / -1;">
+                    <div class="ext-card-header">
+                        <h3><i class="fa-solid fa-chart-line" style="color: #10B981;"></i> Product Sales Performance
+                        </h3>
+                    </div>
+                    <div class="sales-chart-wrapper" style="height: 250px;">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -225,4 +232,5 @@
 
     <script src="dashboard.js"></script>
 </body>
+
 </html>

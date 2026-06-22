@@ -60,9 +60,11 @@ body {
 .brand-logo {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg,
-      var(--primary-color),
-      var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: var(--white);
   border-radius: 10px;
   display: flex;
@@ -126,9 +128,11 @@ body {
 }
 
 .menu-item.active a {
-  background: linear-gradient(135deg,
-      var(--primary-color),
-      var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: var(--white);
   box-shadow: 0 4px 12px rgba(15, 76, 129, 0.15);
 }
@@ -220,7 +224,6 @@ body {
 .header-accent-icon {
   color: var(--secondary-color);
 }
-
 .header-accent-icon.icon-alt {
   color: var(--card-green);
 }
@@ -369,9 +372,11 @@ body {
 }
 
 .action-btn-submit {
-  background: linear-gradient(135deg,
-      var(--primary-color),
-      var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: var(--white);
   box-shadow: 0 4px 12px rgba(15, 76, 129, 0.2);
 }
@@ -394,45 +399,36 @@ body {
 
 /* न्यू बटण - प्रोफेशनल स्टाईल */
 .action-btn-new {
-  background-color: #2563eb;
-  /* प्रोफेशनल ब्लू */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
+    background-color: #2563eb; /* प्रोफेशनल ब्लू */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
-
-.action-btn-new:hover {
-  background-color: #1d4ed8;
-}
+.action-btn-new:hover { background-color: #1d4ed8; }
 
 /* कॅन्सल बटण - प्रोफेशनल स्टाईल */
 .action-btn-cancel {
-  background-color: #64748b;
-  /* प्रोफेशनल ग्रे */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
+    background-color: #64748b; /* प्रोफेशनल ग्रे */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
-
-.action-btn-cancel:hover {
-  background-color: #475569;
-}
+.action-btn-cancel:hover { background-color: #475569; }
 
 /* सेव्ह बटण (जर आधीपासून असेल तर) */
 .action-btn-submit {
-  background-color: #059669;
-  /* प्रोफेशनल ग्रीन */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
+    background-color: #059669; /* प्रोफेशनल ग्रीन */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 /* ==========================================================================
@@ -559,7 +555,6 @@ body {
     opacity: 0;
     transform: translateY(16px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -602,252 +597,16 @@ body {
   .mobile-header {
     display: flex;
   }
-
   .sidebar {
     transform: translateX(-100%);
   }
-
   .sidebar.open {
     transform: translateX(0);
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
   }
-
   .main-content {
     margin-left: 0;
     width: 100%;
     padding: 90px 20px 20px 20px;
   }
 }
-
-
-/* हेडर कंटेनर */
-.panel-header-simple {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-/* बटणांचा कंटेनर - इथे gap कंट्रोल करा */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  /* हा गॅप तुम्ही तुमच्या आवडीनुसार 5px किंवा 0px करू शकता */
-}
-
-/* बटणांची साईज */
-.btn-add-new-trigger,
-.btn-outline-secondary,
-.btn-outline-success {
-  padding: 8px 12px;
-  /* पॅडिंग नीट केली आहे */
-  font-size: 13px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  /* आयकॉन आणि टेक्स्ट मधील अंतर */
-  border: 1px solid transparent;
-}
-
-/* कलर स्टाईल */
-.btn-add-new-trigger {
-  background: #007bff;
-  color: white;
-  border: none;
-}
-
-.btn-outline-secondary {
-  border-color: #6c757d;
-  color: #6c757d;
-  background: transparent;
-}
-
-.btn-outline-success {
-  border-color: #28a745;
-  color: #28a745;
-  background: transparent;
-}
-
-/* होव्हर इफेक्ट */
-.btn-add-new-trigger:hover {
-  background: #0056b3;
-}
-
-.btn-outline-secondary:hover {
-  background: #6c757d;
-  color: white;
-}
-
-.btn-outline-success:hover {
-  background: #28a745;
-  color: white;
-}
-
-
-/* बटणांची साईज वाढवण्यासाठी */
-.btn-add-new-trigger, 
-.btn-outline-secondary, 
-.btn-outline-success {
-    padding: 12px 24px;      /* पॅडिंग वाढवली (उंची आणि रुंदी वाढेल) */
-    font-size: 15px;         /* फॉन्ट थोडा मोठा केला */
-    font-weight: 600;        /* टेक्स्ट थोडे जाड (Bold) केले */
-    border-radius: 8px;      /* कोपरे थोडे अधिक राउंड केले */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;                /* आयकॉन आणि टेक्स्ट मधील अंतर वाढवले */
-    border: 1.5px solid #090808d9;
-}
-
-/* हेडरमधील बटणांचा कंटेनर */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;               /* बटणांमधील अंतर थोडे वाढवले */
-}
-
-/* होव्हर इफेक्टमध्ये थोडी शॅडो दिली (Premium लुकसाठी) */
-.btn-add-new-trigger:hover, 
-.btn-outline-secondary:hover, 
-.btn-outline-success:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-
-/* बटण स्टाईल */
-.t-btn {
-    padding: 8px 16px;          /* बटणाची उंची आणि रुंदी वाढवण्यासाठी */
-    border-radius: 6px;        /* कोपरे गोलाकार करण्यासाठी */
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease; /* क्लिक करताना स्मूथ इफेक्टसाठी */
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;                  /* आयकॉन आणि टेक्स्ट मधील अंतर */
-    border: 1px solid transparent;
-}
-
-/* Edit बटण */
-.btn-edit {
-    background-color: #eef2ff;
-    color: #4f46e5;
-    border-color: #c7d2fe;
-}
-
-.btn-edit:hover {
-    background-color: #4f46e5;
-    color: white;
-}
-
-/* Delete बटण */
-.btn-delete {
-    background-color: #fef2f2;
-    color: #ef4444;
-    border-color: #fecaca;
-}
-
-.btn-delete:hover {
-    background-color: #ef4444;
-    color: white;
-}
-
-
-/* Modal Overlay */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-/* Modal Content */
-.modal-content {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 650px;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.modal-content h3 { margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
-
-/* Modal Form Grid */
-.modal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-
-/* सर्च कंटेनर आणि इनपुट स्टाईलिंग */
-.search-container {
-    display: inline-block;
-    margin-right: 15px;
-    position: relative; /* आयकॉनसाठी आवश्यक */
-}
-
-#itemSearch {
-    padding: 12px 20px; /* थोडी जास्त पॅडिंग */
-    height: 45px;      /* सर्च बारची उंची वाढवली */
-    border-radius: 10px;
-    border: 2px solid #cbd5e1; /* बॉर्डर थोडी गडद केली */
-    width: 280px;
-    transition: all 0.4s ease;
-    background-color: #ffffff;
-    font-size: 15px;    /* फोंट थोडा मोठा */
-    color: #1e293b;
-    outline: none;
-    font-weight: 500;
-}
-
-/* सर्च बारवर क्लिक केल्यावर अधिक उठून दिसणारा इफेक्ट */
-#itemSearch:focus {
-    border-color: #2563eb; /* गडद निळा (Strong Blue) */
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); /* निळसर ग्लो */
-    width: 320px;       /* क्लिक केल्यावर जास्त मोठा होईल */
-}
-
-/* सर्च बारमधील प्लेसहोल्डरचा रंग */
-#itemSearch::placeholder {
-    color: #94a3b8;
-    font-weight: 400;
-}
-
-/* मोबाईलसाठी रिस्पॉन्सिव्ह */
-@media (max-width: 600px) {
-    .search-container {
-        display: block;
-        margin-right: 0;
-        margin-bottom: 15px;
-        width: 100%;
-    }
-    #itemSearch {
-        width: 100% !important;
-    }
-}
-
-

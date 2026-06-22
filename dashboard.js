@@ -104,3 +104,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+
+
+// सेल्स चार्टसाठी डेटा
+const salesCtx = document.getElementById('salesChart').getContext('2d');
+const salesChart = new Chart(salesCtx, {
+    type: 'line', // Line chart प्रोफेशनल दिसतो
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Sales (in ₹)',
+            data: [12000, 19000, 15000, 25000, 22000, 30000],
+            borderColor: '#10B981',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            fill: true,
+            tension: 0.4,
+            borderWidth: 3
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            y: { beginAtZero: true, grid: { borderDash: [5, 5] } },
+            x: { grid: { display: false } }
+        },
+        animation: {
+            duration: 2000, // 2 सेकंद ॲनिमेशन
+            easing: 'easeInOutQuart'
+        }
+    }
+});

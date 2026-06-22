@@ -477,3 +477,17 @@ body {
 @media (max-width: 576px) {
     .dashboard-extended-grid { grid-template-columns: 1fr; }
 }
+
+
+
+/* सेल्स ग्राफसाठी एक्स्ट्रा स्टाईल */
+.sales-chart-wrapper {
+    width: 100%;
+    margin-top: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

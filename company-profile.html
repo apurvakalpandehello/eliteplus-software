@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel | Layout</title>
-  
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="company-profile.css">
 </head>
+
 <body>
 
   <header class="mobile-header">
@@ -66,12 +68,6 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="client-management.html">
-            <i class="fa-solid fa-handshake menu-icon"></i>
-            <span class="menu-text">Client Management</span>
-          </a>
-        </li>
-        <li class="menu-item">
           <a href="quotation.html">
             <i class="fa-solid fa-file-lines menu-icon"></i>
             <span class="menu-text">Quotation</span>
@@ -88,7 +84,7 @@
     </div>
   </aside>
 
-  
+
   <!-- Main Workspace Frame -->
   <main class="main-content">
     <div class="container-fluid px-0">
@@ -101,82 +97,110 @@
 
       <!-- Section 1: Company Profile Form Structure -->
       <div class="card card-box mb-5">
-        <h3 class="page-subheading"><i class="fa-solid fa-building-circle-check"></i> Basic Details</h3>
+        <h3 class="page-subheading"><i class="fa-solid fa-building-circle-check"></i> Comprehensive Company Profile</h3>
         <form onsubmit="event.preventDefault();">
           <div class="row g-4">
             <div class="col-md-6">
-              <div class="form-group-custom">
-                <label>Company Name</label>
-                <input type="text" class="form-control-custom" placeholder="Enter Company Name">
-              </div>
+              <div class="form-group-custom"><label>Company Name</label><input type="text" class="form-control-custom"
+                  placeholder="Enter Company Name"></div>
             </div>
             <div class="col-md-6">
-              <div class="form-group-custom">
-                <label>CIN Number</label>
-                <input type="text" class="form-control-custom" placeholder="CIN No">
-              </div>
+              <div class="form-group-custom"><label>Print Name</label><input type="text" class="form-control-custom"
+                  placeholder="Name to appear on print"></div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group-custom"><label>GST Number</label><input type="text" class="form-control-custom"
+                  placeholder="Enter GST No"></div>
             </div>
             <div class="col-md-4">
               <div class="form-group-custom">
-                <label>TAN Number</label>
-                <input type="text" class="form-control-custom" placeholder="TAN No">
+                <label>GST Status</label>
+                <select class="form-control-custom" style="appearance: auto;">
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
               </div>
             </div>
             <div class="col-md-4">
-              <div class="form-group-custom">
-                <label>Year of Beginning</label>
-                <input type="number" class="form-control-custom" placeholder="e.g. 2020">
-              </div>
+              <div class="form-group-custom"><label>PAN Number</label><input type="text" class="form-control-custom"
+                  placeholder="PAN No"></div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group-custom"><label>CIN Number</label><input type="text" class="form-control-custom"
+                  placeholder="CIN No"></div>
             </div>
             <div class="col-md-4">
-              <div class="form-group-custom">
-                <label>GST Number</label>
-                <input type="text" class="form-control-custom" placeholder="GST No">
-              </div>
+              <div class="form-group-custom"><label>TAN Number</label><input type="text" class="form-control-custom"
+                  placeholder="TAN No"></div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group-custom">
-                <label>Email Address</label>
-                <input type="email" class="form-control-custom" placeholder="Email">
-              </div>
+            <div class="col-md-4">
+              <div class="form-group-custom"><label>MSME / UDYAM Number</label><input type="text"
+                  class="form-control-custom" placeholder="Enter Udyam No"></div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group-custom">
-                <label>Mobile Number</label>
-                <input type="text" class="form-control-custom" placeholder="Mobile">
-              </div>
+
+            <div class="col-md-3">
+              <div class="form-group-custom"><label>F.Y Beginning</label><input type="number"
+                  class="form-control-custom" placeholder="2026"></div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group-custom"><label>Email Address</label><input type="email" class="form-control-custom"
+                  placeholder="Email"></div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group-custom"><label>Mobile Number</label><input type="text" class="form-control-custom"
+                  placeholder="Mobile"></div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group-custom"><label>Website URL</label><input type="url" class="form-control-custom"
+                  placeholder="https://website.com"></div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group-custom"><label>Multiple Bank Accounts</label><textarea class="form-control-custom"
+                  rows="2" placeholder="Bank Name, A/c No, IFSC (Comma separated)"></textarea></div>
             </div>
             <div class="col-md-12">
-              <div class="form-group-custom">
-                <label>Registered Address</label>
-                <textarea class="form-control-custom" rows="3" placeholder="Enter Full Address"></textarea>
-              </div>
+              <div class="form-group-custom"><label>Registered Address</label><textarea class="form-control-custom"
+                  rows="2" placeholder="Enter Full Address"></textarea></div>
             </div>
-            <div class="col-md-6">
+
+            <div class="col-md-4">
               <div class="form-group-custom">
                 <label>Company Logo</label>
-                <div class="upload-box-wrapper">
-                  <i class="fa-solid fa-cloud-arrow-up"></i>
-                  <p class="mb-1 fw-medium text-secondary" style="font-size: 13px;">Upload Logo (PNG/JPG)</p>
-                  <input type="file" accept="image/*" class="file-input-detector">
-                  <div class="file-preview-name">No file selected</div>
+                <div class="upload-box-wrapper"><i class="fa-solid fa-cloud-arrow-up"></i>
+                  <p class="mb-0" style="font-size: 12px;">Upload Logo</p><input type="file"
+                    class="file-input-detector">
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+              <div class="form-group-custom">
+                <label>UPI QR Code</label>
+                <div class="upload-box-wrapper"><i class="fa-solid fa-qrcode"></i>
+                  <p class="mb-0" style="font-size: 12px;">Upload QR</p><input type="file" class="file-input-detector">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
               <div class="form-group-custom">
                 <label>Authorized Signature</label>
-                <div class="upload-box-wrapper">
-                  <i class="fa-solid fa-signature"></i>
-                  <p class="mb-1 fw-medium text-secondary" style="font-size: 13px;">Upload Signature Specimen</p>
-                  <input type="file" accept="image/*" class="file-input-detector">
-                  <div class="file-preview-name">No file selected</div>
+                <div class="upload-box-wrapper"><i class="fa-solid fa-signature"></i>
+                  <p class="mb-0" style="font-size: 12px;">Upload Signature</p><input type="file"
+                    class="file-input-detector">
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="mt-4 p-3 border rounded bg-light" style="border-style: dashed !important;">
+            <h6 class="text-primary"><i class="fa-solid fa-eye"></i> Letterhead Preview</h6>
+            <p class="text-muted small">Your official documents will be generated with these saved details.</p>
+          </div>
+
           <div class="mt-4">
-            <button type="submit" class="btn btn-action-primary">
+            <button type="submit" id="btnSaveCompany" class="btn btn-action-primary">
               <i class="fa-solid fa-floppy-disk me-2"></i> Save Company Profile
             </button>
           </div>
@@ -211,8 +235,10 @@
                 <td><span class="badge bg-light text-dark border px-2 py-1 user-role">Admin</span></td>
                 <td><span class="badge-active-status user-status" data-status="Active">Active</span></td>
                 <td class="text-end">
-                  <button class="btn btn-table-edit btn-edit-trigger"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-                  <button class="btn btn-table-delete btn-delete-trigger"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                  <button class="btn btn-table-edit btn-edit-trigger"><i class="fa-solid fa-pen-to-square"></i>
+                    Edit</button>
+                  <button class="btn btn-table-delete btn-delete-trigger"><i class="fa-solid fa-trash-can"></i>
+                    Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -240,7 +266,8 @@
             </div>
             <div class="form-group-custom">
               <label for="fieldUserEmail">Email Address</label>
-              <input type="email" id="fieldUserEmail" class="form-control-custom" placeholder="name@company.com" required>
+              <input type="email" id="fieldUserEmail" class="form-control-custom" placeholder="name@company.com"
+                required>
             </div>
             <div class="form-group-custom">
               <label for="fieldUserRole">System Role</label>
@@ -259,7 +286,8 @@
               </select>
             </div>
             <div class="d-flex justify-content-end gap-2 mt-4">
-              <button type="button" class="btn btn-light border px-4" data-bs-dismiss="modal" style="border-radius: 10px;">Cancel</button>
+              <button type="button" class="btn btn-light border px-4" data-bs-dismiss="modal"
+                style="border-radius: 10px;">Cancel</button>
               <button type="submit" class="btn btn-action-primary px-4" id="btnSubmitForm">Save User</button>
             </div>
           </form>
@@ -270,9 +298,10 @@
 
   <!-- Bootstrap 5 JavaScript Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bundle.min.js"></script>
   <script src="company-profile.js"></script>
 </body>
+
 </html>

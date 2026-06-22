@@ -514,3 +514,194 @@ select.form-input-custom {
         width: 280px;
     }
 }
+
+
+/* Table Container */
+.table-responsive-custom {
+    overflow-x: auto;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+/* Base Table */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Header Styling */
+.table-custom thead {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.table-custom th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+    white-space: nowrap;
+}
+
+/* Body Styling */
+.table-custom td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Hover Effect */
+.table-row-hover:hover {
+    background-color: #f1f7ff;
+    transition: background 0.2s ease;
+}
+
+/* Action Buttons */
+.table-actions-btns {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-table-edit {
+    background: #e7f3ff;
+    color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-table-edit:hover { background: #d0e8ff; }
+
+.btn-table-delete {
+    background: #ffebee;
+    color: #dc3545;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-table-delete:hover { background: #ffcdd2; }
+
+/* Status Badge */
+.badge-active {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 4px 8px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+
+/* Modal Container */
+.custom-modal {
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* Label Styling */
+.custom-input-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Custom Input Field */
+.custom-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: #4299e1;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Submit Button */
+.btn-update-submit {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-update-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(66, 153, 225, 0.4);
+}
+
+
+
+/* मास्टर कार्ड हेडर स्टाईल */
+.master-card-header {
+    background: #ffffff;
+    border-bottom: 2px solid #f8f9fa;
+    border-radius: 12px 12px 0 0;
+}
+
+.master-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3748; /* गडद ग्रे रंग */
+}
+
+/* सर्व बटणांसाठी कॉमन स्टाईल */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+/* Import Button (Dark Grey Theme) */
+.btn-import {
+    background-color: #4a5568; /* डार्क ग्रे */
+}
+
+.btn-import:hover {
+    background-color: #2d3748;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Export Button (Royal Blue Theme) */
+.btn-export {
+    background-color: #3182ce; /* रॉयल ब्लू */
+}
+
+.btn-export:hover {
+    background-color: #2b6cb0;
+    box-shadow: 0 4px 6px rgba(49, 130, 206, 0.3);
+}
+
+/* आयकॉन्ससाठी थोडी जागा */
+.me-1 { margin-right: 8px; }
