@@ -188,7 +188,7 @@ body {
 
 /* ==========================================================================
            FORM PANEL & GRID DESIGN
-           ========================================================================== */
+========================================================================== */
 .form-panel {
   background-color: var(--white);
   border: 1px solid var(--border-color);
@@ -205,7 +205,8 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
+  background: #ffffff;
 }
 
 .panel-header-simple h3 {
@@ -227,25 +228,23 @@ body {
 
 /* Main Top Header Add New Action Trigger style */
 .btn-add-new-trigger {
-  background-color: #eff6ff;
-  color: var(--secondary-color);
-  border: 1px solid #bfdbfe;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 13px;
+  background: #007bff;
+  color: white;
+  padding: 12px 24px;
+  font-size: 15px;
   font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  border: 1.5px solid #090808d9;
   transition: all 0.2s ease;
 }
 
 .btn-add-new-trigger:hover {
-  background-color: var(--secondary-color);
-  color: var(--white);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.15);
+  background: #0056b3;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .master-grid-form {
@@ -369,33 +368,21 @@ body {
 }
 
 .action-btn-submit {
-  background: linear-gradient(135deg,
-      var(--primary-color),
-      var(--secondary-color));
-  color: var(--white);
-  box-shadow: 0 4px 12px rgba(15, 76, 129, 0.2);
+  background-color: #059669;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .action-btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(15, 76, 129, 0.3);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.3);
 }
 
-.action-btn-reset {
-  background-color: #e2e8f0;
-  color: #475569;
-}
-
-.action-btn-reset:hover {
-  background-color: #cbd5e1;
-  color: #1e293b;
-}
-
-
-/* न्यू बटण - प्रोफेशनल स्टाईल */
 .action-btn-new {
   background-color: #2563eb;
-  /* प्रोफेशनल ब्लू */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -408,10 +395,8 @@ body {
   background-color: #1d4ed8;
 }
 
-/* कॅन्सल बटण - प्रोफेशनल स्टाईल */
 .action-btn-cancel {
   background-color: #64748b;
-  /* प्रोफेशनल ग्रे */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -424,20 +409,85 @@ body {
   background-color: #475569;
 }
 
-/* सेव्ह बटण (जर आधीपासून असेल तर) */
-.action-btn-submit {
-  background-color: #059669;
-  /* प्रोफेशनल ग्रीन */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+/* Header Actions Buttons */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-outline-secondary,
+.btn-outline-success {
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid #090808d9;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  background: #6c757d;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-outline-success {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.btn-outline-success:hover {
+  background: #28a745;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Search Bar styling */
+.search-container {
+  display: inline-block;
+  margin-right: 15px;
+  position: relative;
+}
+
+#itemSearch {
+  padding: 12px 20px;
+  height: 45px;
+  border-radius: 10px;
+  border: 2px solid #cbd5e1;
+  width: 280px;
+  transition: all 0.4s ease;
+  background-color: #ffffff;
+  font-size: 15px;
+  color: #1e293b;
+  outline: none;
+  font-weight: 500;
+}
+
+#itemSearch:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  width: 320px;
+}
+
+#itemSearch::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
 }
 
 /* ==========================================================================
            PREMIUM TABLE ARCHITECTURE
-           ========================================================================== */
+========================================================================== */
 .responsive-table-container {
   width: 100%;
   overflow-x: auto;
@@ -481,14 +531,27 @@ body {
   color: var(--primary-color);
 }
 
-.badge-td span {
-  background-color: #eff6ff;
-  color: #2563eb;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 6px;
-  border: 1px solid #bfdbfe;
+/* Image Cell Styling */
+.table-item-img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+}
+
+.table-item-icon-placeholder {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    border-radius: 6px;
+    font-size: 18px;
+    border: 1px solid #e2e8f0;
 }
 
 .price-td {
@@ -501,7 +564,7 @@ body {
   color: var(--card-green);
 }
 
-/* Action Buttons Layout with Text labels */
+/* Action Buttons Layout */
 .action-td-buttons {
   display: flex;
   justify-content: center;
@@ -509,44 +572,38 @@ body {
 }
 
 .t-btn {
-  border: none;
-  padding: 6px 14px;
-  height: 34px;
+  padding: 8px 16px;
   border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.t-btn i {
-  font-size: 13px;
+  gap: 8px;
+  border: 1px solid transparent;
 }
 
 .btn-edit {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: #eef2ff;
+  color: #4f46e5;
+  border-color: #c7d2fe;
 }
 
 .btn-edit:hover {
-  background-color: #f59e0b;
-  color: var(--white);
-  transform: translateY(-1px);
+  background-color: #4f46e5;
+  color: white;
 }
 
 .btn-delete {
-  background-color: #fee2e2;
-  color: var(--logout-danger);
+  background-color: #fef2f2;
+  color: #ef4444;
+  border-color: #fecaca;
 }
 
 .btn-delete:hover {
-  background-color: var(--logout-danger);
-  color: var(--white);
-  transform: translateY(-1px);
+  background-color: #ef4444;
+  color: white;
 }
 
 /* Animations Mechanical Loading */
@@ -559,7 +616,6 @@ body {
     opacity: 0;
     transform: translateY(16px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -597,168 +653,6 @@ body {
   color: var(--primary-color);
   cursor: pointer;
 }
-
-@media (max-width: 991px) {
-  .mobile-header {
-    display: flex;
-  }
-
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    padding: 90px 20px 20px 20px;
-  }
-}
-
-
-/* हेडर कंटेनर */
-.panel-header-simple {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-/* बटणांचा कंटेनर - इथे gap कंट्रोल करा */
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  /* हा गॅप तुम्ही तुमच्या आवडीनुसार 5px किंवा 0px करू शकता */
-}
-
-/* बटणांची साईज */
-.btn-add-new-trigger,
-.btn-outline-secondary,
-.btn-outline-success {
-  padding: 8px 12px;
-  /* पॅडिंग नीट केली आहे */
-  font-size: 13px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  /* आयकॉन आणि टेक्स्ट मधील अंतर */
-  border: 1px solid transparent;
-}
-
-/* कलर स्टाईल */
-.btn-add-new-trigger {
-  background: #007bff;
-  color: white;
-  border: none;
-}
-
-.btn-outline-secondary {
-  border-color: #6c757d;
-  color: #6c757d;
-  background: transparent;
-}
-
-.btn-outline-success {
-  border-color: #28a745;
-  color: #28a745;
-  background: transparent;
-}
-
-/* होव्हर इफेक्ट */
-.btn-add-new-trigger:hover {
-  background: #0056b3;
-}
-
-.btn-outline-secondary:hover {
-  background: #6c757d;
-  color: white;
-}
-
-.btn-outline-success:hover {
-  background: #28a745;
-  color: white;
-}
-
-
-/* बटणांची साईज वाढवण्यासाठी */
-.btn-add-new-trigger, 
-.btn-outline-secondary, 
-.btn-outline-success {
-    padding: 12px 24px;      /* पॅडिंग वाढवली (उंची आणि रुंदी वाढेल) */
-    font-size: 15px;         /* फॉन्ट थोडा मोठा केला */
-    font-weight: 600;        /* टेक्स्ट थोडे जाड (Bold) केले */
-    border-radius: 8px;      /* कोपरे थोडे अधिक राउंड केले */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;                /* आयकॉन आणि टेक्स्ट मधील अंतर वाढवले */
-    border: 1.5px solid #090808d9;
-}
-
-/* हेडरमधील बटणांचा कंटेनर */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;               /* बटणांमधील अंतर थोडे वाढवले */
-}
-
-/* होव्हर इफेक्टमध्ये थोडी शॅडो दिली (Premium लुकसाठी) */
-.btn-add-new-trigger:hover, 
-.btn-outline-secondary:hover, 
-.btn-outline-success:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-
-/* बटण स्टाईल */
-.t-btn {
-    padding: 8px 16px;          /* बटणाची उंची आणि रुंदी वाढवण्यासाठी */
-    border-radius: 6px;        /* कोपरे गोलाकार करण्यासाठी */
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease; /* क्लिक करताना स्मूथ इफेक्टसाठी */
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;                  /* आयकॉन आणि टेक्स्ट मधील अंतर */
-    border: 1px solid transparent;
-}
-
-/* Edit बटण */
-.btn-edit {
-    background-color: #eef2ff;
-    color: #4f46e5;
-    border-color: #c7d2fe;
-}
-
-.btn-edit:hover {
-    background-color: #4f46e5;
-    color: white;
-}
-
-/* Delete बटण */
-.btn-delete {
-    background-color: #fef2f2;
-    color: #ef4444;
-    border-color: #fecaca;
-}
-
-.btn-delete:hover {
-    background-color: #ef4444;
-    color: white;
-}
-
 
 /* Modal Overlay */
 .modal-overlay {
@@ -801,43 +695,27 @@ body {
     gap: 15px;
 }
 
+@media (max-width: 991px) {
+  .mobile-header {
+    display: flex;
+  }
 
-/* सर्च कंटेनर आणि इनपुट स्टाईलिंग */
-.search-container {
-    display: inline-block;
-    margin-right: 15px;
-    position: relative; /* आयकॉनसाठी आवश्यक */
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 90px 20px 20px 20px;
+  }
 }
 
-#itemSearch {
-    padding: 12px 20px; /* थोडी जास्त पॅडिंग */
-    height: 45px;      /* सर्च बारची उंची वाढवली */
-    border-radius: 10px;
-    border: 2px solid #cbd5e1; /* बॉर्डर थोडी गडद केली */
-    width: 280px;
-    transition: all 0.4s ease;
-    background-color: #ffffff;
-    font-size: 15px;    /* फोंट थोडा मोठा */
-    color: #1e293b;
-    outline: none;
-    font-weight: 500;
-}
-
-/* सर्च बारवर क्लिक केल्यावर अधिक उठून दिसणारा इफेक्ट */
-#itemSearch:focus {
-    border-color: #2563eb; /* गडद निळा (Strong Blue) */
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15); /* निळसर ग्लो */
-    width: 320px;       /* क्लिक केल्यावर जास्त मोठा होईल */
-}
-
-/* सर्च बारमधील प्लेसहोल्डरचा रंग */
-#itemSearch::placeholder {
-    color: #94a3b8;
-    font-weight: 400;
-}
-
-/* मोबाईलसाठी रिस्पॉन्सिव्ह */
 @media (max-width: 600px) {
     .search-container {
         display: block;
@@ -849,5 +727,3 @@ body {
         width: 100% !important;
     }
 }
-
-
